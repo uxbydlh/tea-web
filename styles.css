@@ -1,0 +1,110 @@
+
+/*NOTE: styles are done mobile first*/
+/*#region Global*/ 
+:root {
+    --text-colour: #000000;
+    --unselected-colour: #1b140fbf;
+    --white-colour: #ffffff;
+    --cream-bg-colour: #fbf9f2;
+    --light-pink-colour: #fce1ea;
+    --light-blue-colour: #c6e8ff;
+
+    /*allows us to include the padding and birder in an elements total width & height
+    width/height + padding + border = actual width/height of an element
+    BECOMES width/height = actual width height & padding occurs INSIDE the box*/
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+
+    font-family: Verdana, sans-serif;
+    color: var(--text-colour);
+}
+
+body {
+    background-color: var(--cream-bg-colour);
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+/*#endregion Global*/
+
+/*#region Header/Nav*/
+.header {
+    background-color: var(--cream-bg-colour);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 56px;
+    /*z-index is the order that elements are stacked on eachother.
+    the higher the number, the more elements it will be on top of*/
+    z-index: 99;
+}
+
+.nav {
+    top: 56px;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: var(--cream-bg-colour);
+    overflow: hidden;
+}
+
+.menu a {
+    /*elements always start on new line and take up full available width*/
+    display: block;
+    padding: 16px;
+    color: var(--unselected-colour);
+    text-decoration-line: none;
+}
+
+/*Hovering over a link*/
+.menu a:hover {
+    color: var(--text-colour);
+}
+
+/*Makes nav invisible and sets the transition for the slide-out menu*/
+.nav{
+    /*content larger than this height will overflow
+    so logo must technically be separate*/
+    max-height: 0;
+    /*element changing, time to make it change, speed curve*/
+    transition: max-height .5s ease-out;
+}
+
+/*#region Menu Buttons*/
+
+.open-menu {
+    cursor: pointer;
+    float: right;
+    padding: 16px 16px 16px 16px;
+}
+
+.close-menu {
+    cursor: pointer;
+    float: right;
+    display: none;
+    padding: 16px 16px 16px 16px;
+}
+
+.side-menu {
+    display: none;
+}
+
+/*Toggling the menu*/
+.side-menu:checked ~ .nav {
+    max-height: 100%;
+}
+
+.side-menu:checked ~ .open-menu {
+    display: none;
+}
+
+.side-menu:checked ~ .close-menu {
+    display: flex;
+}
+
+/*#endregion Menu Buttons*/
+
+/*#endregion Header/Nav*/
