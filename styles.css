@@ -4,27 +4,32 @@
 :root {
     --text-body: #201C1D;
     --text-action-hover: #20445E;
-
-    --unselected-colour: #1b140fbf;
-    --white-colour: #ffffff;
-    --light-pink-colour: #fce1ea;
-    --light-blue-colour: #c6e8ff;
+    --text-on-action: #ffffff;
 
     --surface-page: #ffffff;
     --surface-primary: #F8FCFF;
     --surface-action-hover-2: #DCEEFB;
+    --surface-highlight-text: #40393A;
 
     --border-primary: #B9B5B6;
+    --border-action: #4FABEC;
     --border-action-hover: #3F89BD; 
 
     --border-radius-md: 4px;
     --border-radius-round: 64px;
 
+    --border-width-none: 0px;
+    --border-width-sm: 1px;
     --border-width-md: 2px;
 
-    --type-font-family-heading: Roboto+Mono;
+    --type-font-family-heading: Roboto Mono;
     --heading-h5: 20px;
     --line-height-heading-h5: 24px;
+    --heading-h6: 18px;
+    --line-height-heading-h6: 20px;
+
+    --font-size-body-md: 16px;
+    --line-height-body-md: 24px;
 
 
     /*allows us to include the padding and birder in an elements total width & height
@@ -33,7 +38,7 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
 
-    font-family: Roboto Mono, sans-serif;
+    font-family: Sometype Mono, sans-serif;
     color: var(--text-colour);
 }
 
@@ -56,6 +61,28 @@ h5 {
     text-transform: uppercase;
     margin: 0;
     padding: 0;
+}
+
+h6 {
+    color: var(--text-action-hover);
+
+    font-family: var(--type-font-family-heading);
+    font-size: var(--heading-h6);
+    font-style: normal;
+    font-weight: 400;
+    line-height: var(--line-height-heading-h6);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+
+    margin: 0;
+}
+
+p {
+    font-size: var(--font-size-body-md);
+    font-style: normal;
+    font-weight: 400;
+    line-height: var(--line-height-body-md);
+    letter-spacing: 0.64px;
 }
 
 /*#endregion Global*/
@@ -191,3 +218,92 @@ h5 {
 /*#endregion Menu Buttons*/
 
 /*#endregion Header/Nav*/
+
+/*#region Highlight Card*/
+
+.highlight-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: stretch;
+}
+
+.highlight-image-frame {
+    display: flex;
+    align-self: stretch;
+    justify-content: center;
+    overflow: hidden;
+
+    max-height: 208px;
+    min-height: 208px;
+
+    margin: 0px 0px -44px 0px;
+}
+
+.highlight-image-frame img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.highlight-info-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+}
+
+.highlight-tab-header {
+    display: flex;
+    padding: 0px 12px;
+    align-items: center;
+    align-self: stretch;
+    
+    border-bottom: var(--border-width-md) solid var(--border-action);
+}
+
+.highlight-tab-inner {
+    display: flex;
+    padding: 4px 24px 4px 12px;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: -2px;
+
+    border-radius: 4px 40px 0px 0px;
+    border-top: var(--border-width-md) solid var(--border-action);
+    border-right: var(--border-width-md) solid var(--border-action);
+    border-bottom: var(--border-width-none) solid var(--border-action);
+    border-left: var(--border-width-md) solid var(--border-action);
+    background: var(--surface-primary);
+}
+
+.highlight-blurb-frame {
+    display: flex;
+    padding: 8px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+
+    border-radius: 0px 0px 4px 4px;
+    border-top: var(--border-width-none);
+    border-right: var(--border-width-md) solid var(--border-action);
+    border-bottom: var(--border-width-md) solid var(--border-action);
+    border-left: var(--border-width-md) solid var(--border-action);
+    background: var(--surface-primary);
+}
+
+.highlight-blurb {
+    display: flex;
+    padding: 4px 8px 8px 8px;
+    align-items: center;
+    align-self: stretch;
+    margin: 0;
+
+    border: var(--border-width-sm) solid var(--border-action-hover);
+    background: var(--surface-highlight-text);
+
+    color: var(--text-on-action);
+}
+
+/*#endregion Highlight Card*/
