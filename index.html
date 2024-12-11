@@ -31,15 +31,54 @@
     </script>
 
     <main>
+        <section class="highlight-section">
+            <div class="section-tab">
+                <div class="section-tab-inner">
+                    <img src="">
+                    <h5>Highlights</h5>
+                    <img src="">
+                </div>
+            </div>
+            <div id="highlight-container" x-data="highlightData">
+                <template x-for="hl in highlightData">
+                    <div class="highlight-card">
+                        <div class="highlight-image-frame">
+                            <img :src="`/media/highlight-card/${hl.image}`">
+                        </div>
+                        <div class="highlight-info-frame">
+                            <div class="highlight-tab-header">
+                                <div class="highlight-tab-inner">
+                                    <h6 x-text="hl.title"></h6>
+                                    <img src="/media/highlight-card/icon_highlightright.svg">
+                                </div>
+                            </div>
+                            <div class="highlight-blurb-frame">
+                                <p class="highlight-blurb" x-text="hl.blurb">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
 
-        <div id="highlight-container">
-            <script>
-                $(function(){
-                    $("#highlight-container").load("components/highlight-card.html");
-                })
-            </script>
-        </div>
-        
+        </section>
+
     </main>
+
+    <!--ALPINE DATA INSERTION-->
+    <script>
+        document.addEventListener('alpine:init', () => {
+            const highlightData = [
+                {
+                    title: "test title lalala",
+                    blurb: "this is a test paragraph. I'm testing you. yeah haha. testing your patience that is.",
+                    image: "breecrunched.jpg"
+                }
+            ]
+            Alpine.data('highlightData', () => ({
+                get highlightData() {return highlightData}
+            }))
+        })
+    </script>
 </body>
 </html>
