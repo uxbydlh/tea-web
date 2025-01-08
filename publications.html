@@ -23,6 +23,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js"></script>
 </head>
 <body>
+
     <div id="header-container"></div>
     <script>
         $(function(){
@@ -30,44 +31,72 @@
         })
     </script>
 
-    <main>
+     <!--EISNER NOMINATED-->
+     <section class="blurb-box">
+        <div class="blurb-heading">
+            <img src="/media/icons/tabs/icon_bullet.svg">
+            <h5>Publications</h5>
+            <img src="/media/icons/tabs/icon_bullet.svg">
+        </div>
+        <div class="blurb">
+            <p>
+                Short introduction to the publications page,
+                in your own words (if desired).
+            </p>
+        </div>
+    </section>
 
-        <!--AUTHORS INTRO-->
-        <section class="author-intro">
-            <img class="author-photo" src="media/highlight-card/test_card.png">
-            <div class="author-rows">
-                <div class="author-tag">
-                    <img src="/media/icons/tabs/icon_bullet.svg">
-                    <h6>Writer</h6>
+    <!--TOP HIGHLIGHT-->
+    <div id="highlight-container" x-data="highlightData">
+        <template x-for="hl in highlightData">
+            <div class="highlight-card">
+                <div class="highlight-image-frame">
+                    <img :src="`/media/highlight-card/${hl.image}`">
                 </div>
-                <div class="author-tag">
-                    <img src="/media/icons/tabs/icon_bullet.svg">
-                    <h6>Editor</h6>
-                </div>
-                <div class="author-tag">
-                    <img src="/media/icons/tabs/icon_bullet.svg">
-                    <h6>Artist</h6>
+                <div class="highlight-info-frame">
+                    <div class="highlight-tab-header">
+                        <div class="highlight-tab-inner">
+                            <h6 x-text="hl.title"></h6>
+                            <img src="/media/highlight-card/icon_highlightright.svg">
+                        </div>
+                    </div>
+                    <div class="highlight-blurb-frame">
+                        <p class="highlight-blurb" x-text="hl.blurb">
+                        </p>
+                    </div>
+                    
+                    <div class="highlight-btn-row">
+                        <template x-for="btn in hl.buttons" :key="index">
+                            <a class="menu-btn" id="small" x-bind:href="btn.link" target="_blank" rel="noopener noreferrer">
+                                <div class="icon-frame" id="small">
+                                    <img :src="`/media/icons/menu/${btn.icon}`">
+                                </div>
+                                <p x-text="btn.text"></p>
+                            </a>
+                        </template>
+                    </div>
                 </div>
             </div>
-        </section>
+        </template>
+    </div>
 
-        <!--EISNER NOMINATED-->
-        <section class="blurb-box">
-            <div class="blurb-heading">
-                <img src="/media/icons/tabs/icon_bullet.svg">
-                <h5>Eisner Nominated Creator</h5>
-                <img src="/media/icons/tabs/icon_bullet.svg">
+    <!--GENERATED PUBLICATION SECTIONS-->
+    <div x-data="pubData">
+        <template x-for="pub in pubData">
+            <div>  
+                <h1 x-text="pub.name"></h1>
+                <h1 x-text="pub.skills"></h1>
+            <template x-for="work in pub.works" :key="index">
+                <div>
+                    <p x-text="work.title"></p>
+                    <p x-text="work.role"></p>
+                </div>
+            </template>
             </div>
-            <div class="blurb">
-                <p>
-                    Short introduction representative of the subject.
-                    Ready for the next chapter!
-                </p>
-            </div>
-        </section>
+        </template>
+    </div>
 
-
-        <!--HIGHLIGHTS TAB-->
+    <div x-data="pubData">
         <section class="tabbed-section">
             <div class="section-tab">
                 <div class="section-tab-inner">
@@ -109,59 +138,59 @@
                 </template>
             </div>
         </section>
-
-    </main>
+    </div>
 
     <!--ALPINE DATA INSERTION-->
     <script>
         document.addEventListener('alpine:init', () => {
             const highlightData = [
                 {
-                    title: "Test title 1",
-                    blurb: "this is a test paragraph. I'm testing you. yeah haha. testing your patience that is.",
+                    title: "Highlighted Project",
+                    blurb: "This is a short description of the project. Typically, this may be a few sentences long. One, two or three sentences just about.",
                     image: "breecrunched.jpg",
                     buttons: {
                         btn1: {
                             link: "https://www.youtube.com/c/AtomicShrimp/videos",
                             icon: "icon_user.svg",
-                            text: "BUY"
+                            text: "Buy"
                         },
                         btn2: {
                             link: "#",
                             icon: "icon_user.svg",
-                            text: "READ"
+                            text: "Read"
+                        },
+                        btn3: {
+                            link: "#",
+                            icon: "icon_user.svg",
+                            text: "More"
                         }
                     }
-                },
-                {
-                    title: "Test title 2",
-                    blurb: "this is a second test paragraph. I'm testing you. yeah haha. testing your patience that is.",
-                    image: "breecrunched.jpg",
-                    btn1txt: "testtesttesttesttest"
-                },
-                {
-                    title: "Test title 3",
-                    blurb: "this is a third test paragraph. I'm testing you. yeah haha. testing your patience that is.",
-                    image: "breecrunched.jpg",
-                    btn1txt: "testtesttesttesttest"
-                },
-                {
-                    title: "Test title 4",
-                    blurb: "this is a fourth test paragraph. I'm testing you. yeah haha. testing your patience that is.",
-                    image: "breecrunched.jpg",
-                    btn1txt: "testtesttesttesttest"
-                },
-                {
-                    title: "Test title 5",
-                    blurb: "this is a fifth test paragraph. I'm testing you. yeah haha. testing your patience that is.",
-                    image: "breecrunched.jpg",
-                    btn1txt: "testtesttesttesttest"
+                }
+            ]
+            const pubData = [
+                {    
+                    skills: "List of skills you used working on this.",
+                    name: "DC Thomson",
+                    works: {
+                        work1: {
+                            title: "Animals and You",
+                            role: "Role"
+                        },
+                        work2: {
+                            title: "Unicorn Universe",
+                            role: "Role"
+                        }
+                    }
                 },
             ]
             Alpine.data('highlightData', () => ({
                 get highlightData() {return highlightData}
             }))
+            Alpine.data('pubData', () => ({
+                get pubData() {return pubData}
+            }))
         })
     </script>
+
 </body>
 </html>
