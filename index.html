@@ -93,6 +93,17 @@
                                 <p class="highlight-blurb" x-text="hl.blurb">
                                 </p>
                             </div>
+                            
+                            <div class="highlight-btn-row">
+                                <template x-for="btn in hl.buttons" :key="index">
+                                    <a x-bind:href="btn.link" class="menu-btn" target="_blank" rel="noopener noreferrer">
+                                        <div class="icon-frame">
+                                            <img :src="`/media/icons/menu/${btn.icon}`">
+                                        </div>
+                                        <p x-text="btn.text"></p>
+                                    </a>
+                                </template>
+                            </div>
                         </div>
                     </div>
                 </template>
@@ -109,27 +120,43 @@
                 {
                     title: "Test title 1",
                     blurb: "this is a test paragraph. I'm testing you. yeah haha. testing your patience that is.",
-                    image: "breecrunched.jpg"
+                    image: "breecrunched.jpg",
+                    buttons: {
+                        btn1: {
+                            link: "https://www.youtube.com/c/AtomicShrimp/videos",
+                            icon: "icon_user.svg",
+                            text: "testing 1 2 3"
+                        },
+                        btn2: {
+                            link: "#",
+                            icon: "icon_user.svg",
+                            text: "testing 2 3 4"
+                        }
+                    }
                 },
                 {
                     title: "Test title 2",
                     blurb: "this is a second test paragraph. I'm testing you. yeah haha. testing your patience that is.",
-                    image: "breecrunched.jpg"
+                    image: "breecrunched.jpg",
+                    btn1txt: "testtesttesttesttest"
                 },
                 {
                     title: "Test title 3",
                     blurb: "this is a third test paragraph. I'm testing you. yeah haha. testing your patience that is.",
-                    image: "breecrunched.jpg"
+                    image: "breecrunched.jpg",
+                    btn1txt: "testtesttesttesttest"
                 },
                 {
                     title: "Test title 4",
                     blurb: "this is a fourth test paragraph. I'm testing you. yeah haha. testing your patience that is.",
-                    image: "breecrunched.jpg"
+                    image: "breecrunched.jpg",
+                    btn1txt: "testtesttesttesttest"
                 },
                 {
                     title: "Test title 5",
                     blurb: "this is a fifth test paragraph. I'm testing you. yeah haha. testing your patience that is.",
-                    image: "breecrunched.jpg"
+                    image: "breecrunched.jpg",
+                    btn1txt: "testtesttesttesttest"
                 },
             ]
             Alpine.data('highlightData', () => ({
