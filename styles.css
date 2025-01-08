@@ -12,11 +12,13 @@
     --surface-highlight-text: #40393A;
 
     --border-primary: #B9B5B6;
+    --border-secondary: #4FABEC;
     --border-action: #4FABEC;
     --border-action-hover: #3F89BD; 
 
     --icon-primary: #40393A;
 
+    --border-radius-none: 0px;
     --border-radius-md: 4px;
     --border-radius-round: 64px;
 
@@ -47,6 +49,15 @@
 body {
     background-color: var(--surface-primary);
     margin: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding-top: 24px;
+    padding-bottom: 24px;
 }
 
 ul {
@@ -220,6 +231,57 @@ p {
 /*#endregion Menu Buttons*/
 
 /*#endregion Header/Nav*/
+
+/*#region Author Intro*/
+
+.author-intro{
+    display: flex;
+    align-items: center;
+}
+
+.author-photo{
+    max-width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1 0 0;
+
+    border-radius: var(--border-radius-none) 24px 24px var(--border-radius-none);
+    border: var(--border-width-md) solid var(--border-secondary);
+    border-left: 0px;
+    border-color: var(--border-secondary);
+
+    margin-right: -44px;
+}
+
+.author-rows {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 24px;
+}
+
+.author-tag {
+    display: flex;
+    padding: 4px 32px 4px 12px;
+    align-items: center;
+    gap: 12px;
+    align-self: stretch;
+
+    border-radius: var(--border-radius-round) var(--border-radius-none) var(--border-radius-none) var(--border-radius-round);
+    border: var(--border-width-sm) solid var(--border-primary);
+    border-right: 0px;
+    background: var(--surface-page);
+}
+
+.author-tag h6{
+    font-style: italic;
+    font-weight: 400;
+}
+
+/*#endregion Author Intro*/
 
 /*#region Blurbs*/
 
