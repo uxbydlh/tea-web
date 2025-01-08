@@ -97,47 +97,27 @@
     </div>
 
     <div x-data="pubData">
-        <section class="tabbed-section">
-            <div class="section-tab">
-                <div class="section-tab-inner">
-                    <img src="/media/icons/tabs/icon_highlights.svg">
-                    <h5>Highlights</h5>
-                    <img src="/media/icons/tabs/icon_bullet.svg">
-                </div>
-            </div>
-            <div id="highlight-container" x-data="highlightData">
-                <template x-for="hl in highlightData">
-                    <div class="highlight-card">
-                        <div class="highlight-image-frame">
-                            <img :src="`/media/highlight-card/${hl.image}`">
-                        </div>
-                        <div class="highlight-info-frame">
-                            <div class="highlight-tab-header">
-                                <div class="highlight-tab-inner">
-                                    <h6 x-text="hl.title"></h6>
-                                    <img src="/media/highlight-card/icon_highlightright.svg">
-                                </div>
-                            </div>
-                            <div class="highlight-blurb-frame">
-                                <p class="highlight-blurb" x-text="hl.blurb">
-                                </p>
-                            </div>
-                            
-                            <div class="highlight-btn-row">
-                                <template x-for="btn in hl.buttons" :key="index">
-                                    <a class="menu-btn" id="small" x-bind:href="btn.link" target="_blank" rel="noopener noreferrer">
-                                        <div class="icon-frame" id="small">
-                                            <img :src="`/media/icons/menu/${btn.icon}`">
-                                        </div>
-                                        <p x-text="btn.text"></p>
-                                    </a>
-                                </template>
-                            </div>
-                        </div>
+        <template x-for="pub in pubData">
+            <section class="tabbed-section">
+                <div class="section-tab">
+                    <div class="section-tab-inner">
+                        <img :src="`/media/icons/publications/${pub.icon}`" class="section-tab-icon">
+                        <h5 x-text=pub.name></h5>
+                        <img src="/media/icons/tabs/icon_bullet.svg">
                     </div>
-                </template>
-            </div>
-        </section>
+                </div>
+                <div class="published-work">
+                    <img>
+                    <p></p>
+                    <a>
+                        <div>
+                            <p></p>
+                            <img>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </template>
     </div>
 
     <!--ALPINE DATA INSERTION-->
@@ -171,6 +151,7 @@
                 {    
                     skills: "List of skills you used working on this.",
                     name: "DC Thomson",
+                    icon: "DC-Thomson-Mini-Logo.svg",
                     works: {
                         work1: {
                             title: "Animals and You",

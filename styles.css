@@ -394,6 +394,11 @@ p {
     background: var(--surface-page);
 }
 
+.section-tab-icon {
+    width: 24px;
+    height: 24px;
+}
+
 .section-tab-inner h5{
     color: var(--text-headings);
 }
