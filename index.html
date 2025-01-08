@@ -96,8 +96,8 @@
                             
                             <div class="highlight-btn-row">
                                 <template x-for="btn in hl.buttons" :key="index">
-                                    <a x-bind:href="btn.link" class="menu-btn" target="_blank" rel="noopener noreferrer">
-                                        <div class="icon-frame">
+                                    <a class="menu-btn" id="small" x-bind:href="btn.link" target="_blank" rel="noopener noreferrer">
+                                        <div class="icon-frame" id="small">
                                             <img :src="`/media/icons/menu/${btn.icon}`">
                                         </div>
                                         <p x-text="btn.text"></p>
@@ -125,12 +125,12 @@
                         btn1: {
                             link: "https://www.youtube.com/c/AtomicShrimp/videos",
                             icon: "icon_user.svg",
-                            text: "testing 1 2 3"
+                            text: "BUY"
                         },
                         btn2: {
                             link: "#",
                             icon: "icon_user.svg",
-                            text: "testing 2 3 4"
+                            text: "READ"
                         }
                     }
                 },

@@ -171,7 +171,14 @@ p {
     box-shadow: 4px 4px 0px px var(--border-action-hover);
 }
 
+#small.menu-btn {
+    padding: 2px 8px;
+    gap: 20px;
+    width: 100%;
+    max-width: 200px;
 
+    box-shadow: 2px 2px 0px 0px var(--border-action-hover);
+}
 
 .icon-frame{
     display: flex;
@@ -188,9 +195,26 @@ p {
     background: var(--surface-page);
 }
 
+#small.icon-frame {
+    width: 20px;
+    height: 20px;
+}
+
+#small.icon-frame img{
+    width: 24px;
+    height: 24px;
+}
+
 .menu-btn h5{
     flex: 1 0 0;
     text-align: right;
+}
+
+.menu-btn p{
+    flex: 1 0 0;
+    text-align: right;
+    margin: 0;
+    padding: 0;
 }
 
 .menu-btn:hover {
@@ -472,6 +496,15 @@ p {
     background: var(--surface-highlight-text);
 
     color: var(--text-on-action);
+}
+
+.highlight-btn-row {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    align-self: stretch;
+
+    padding-top: 12px;
 }
 
 /*#endregion Highlight Card*/
