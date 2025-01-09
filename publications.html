@@ -24,91 +24,95 @@
 </head>
 <body>
 
-    <div id="header-container"></div>
-    <script>
-        $(function(){
-            $("#header-container").load("components/header.html");
-        })
-    </script>
+    <main>
+        <div id="header-container"></div>
+        <script>
+            $(function(){
+                $("#header-container").load("components/header.html");
+            })
+        </script>
 
-     <!--EISNER NOMINATED-->
-     <section class="blurb-box">
-        <div class="blurb-heading">
-            <img src="/media/icons/tabs/icon_bullet.svg">
-            <h5>Publications</h5>
-            <img src="/media/icons/tabs/icon_bullet.svg">
-        </div>
-        <div class="blurb">
-            <p>
-                Short introduction to the publications page,
-                in your own words (if desired).
-            </p>
-        </div>
-    </section>
+        <!--EISNER NOMINATED-->
+        <section class="blurb-box">
+            <div class="blurb-heading">
+                <img src="/media/icons/tabs/icon_bullet.svg">
+                <h5>Publications</h5>
+                <img src="/media/icons/tabs/icon_bullet.svg">
+            </div>
+            <div class="blurb">
+                <p>
+                    Short introduction to the publications page,
+                    in your own words (if desired).
+                </p>
+            </div>
+        </section>
 
-    <!--TOP HIGHLIGHT-->
-    <div id="highlight-container" x-data="highlightData">
-        <template x-for="hl in highlightData">
-            <div class="highlight-card">
-                <div class="highlight-image-frame">
-                    <img :src="`/media/highlight-card/${hl.image}`">
-                </div>
-                <div class="highlight-info-frame">
-                    <div class="highlight-tab-header">
-                        <div class="highlight-tab-inner">
-                            <h6 x-text="hl.title"></h6>
-                            <img src="/media/highlight-card/icon_highlightright.svg">
+        <!--TOP HIGHLIGHT-->
+        <div x-data="highlightData">
+            <template x-for="hl in highlightData">
+                <div class="highlight-card">
+                    <div class="highlight-image-frame">
+                        <img :src="`/media/highlight-card/${hl.image}`">
+                    </div>
+                    <div class="highlight-info-frame">
+                        <div class="highlight-tab-header">
+                            <div class="highlight-tab-inner">
+                                <h6 x-text="hl.title"></h6>
+                                <img src="/media/highlight-card/icon_highlightright.svg">
+                            </div>
+                        </div>
+                        <div class="highlight-blurb-frame">
+                            <p class="highlight-blurb" x-text="hl.blurb">
+                            </p>
+                        </div>
+                        
+                        <div class="highlight-btn-row">
+                            <template x-for="btn in hl.buttons" :key="index">
+                                <a class="menu-btn" id="small" x-bind:href="btn.link" target="_blank" rel="noopener noreferrer">
+                                    <div class="icon-frame" id="small">
+                                        <img :src="`/media/icons/menu/${btn.icon}`">
+                                    </div>
+                                    <p x-text="btn.text"></p>
+                                </a>
+                            </template>
                         </div>
                     </div>
-                    <div class="highlight-blurb-frame">
-                        <p class="highlight-blurb" x-text="hl.blurb">
-                        </p>
+                </div>
+            </template>
+        </div>
+
+        <!--GENERATED PUBLICATION SECTIONS-->
+        <div x-data="pubData" class="tab-collection">
+            <template x-for="pub in pubData">
+                <section class="tabbed-section">
+                    <div class="section-tab">
+                        <div class="section-tab-inner">
+                            <img :src="`/media/icons/publications/${pub.icon}`" class="section-tab-icon">
+                            <h5 x-text=pub.name></h5>
+                            <img src="/media/icons/tabs/icon_bullet.svg">
+                        </div>
                     </div>
-                    
-                    <div class="highlight-btn-row">
-                        <template x-for="btn in hl.buttons" :key="index">
-                            <a class="menu-btn" id="small" x-bind:href="btn.link" target="_blank" rel="noopener noreferrer">
-                                <div class="icon-frame" id="small">
-                                    <img :src="`/media/icons/menu/${btn.icon}`">
+                    <div class="tab-container">
+                        <template x-for="work in pub.works">
+                            <div class="published-work">
+                                <img :src="`/media/publications/${work.image}`">
+                                <div>
+                                    <b x-text="work.title"></b>
+                                    <p x-text="`- ${work.role}`"></p>
                                 </div>
-                                <p x-text="btn.text"></p>
-                            </a>
+                                <a>
+                                    <div>
+                                        <p>View More</p>
+                                        <img src="/media/icons/tabs/icon_bullet.svg">
+                                    </div>
+                                </a>
+                            </div>
                         </template>
                     </div>
-                </div>
-            </div>
-        </template>
-    </div>
-
-    <!--GENERATED PUBLICATION SECTIONS-->
-    <div x-data="pubData">
-        <template x-for="pub in pubData">
-            <section class="tabbed-section">
-                <div class="section-tab">
-                    <div class="section-tab-inner">
-                        <img :src="`/media/icons/publications/${pub.icon}`" class="section-tab-icon">
-                        <h5 x-text=pub.name></h5>
-                        <img src="/media/icons/tabs/icon_bullet.svg">
-                    </div>
-                </div>
-                <template x-for="work in pub.works">
-                    <div class="published-work">
-                        <img :src="`/media/publications/${work.image}`">
-                        <div>
-                            <b x-text="work.title"></b>
-                            <p x-text="`- ${work.role}`"></p>
-                        </div>
-                        <a>
-                            <div>
-                                <p>View More</p>
-                                <img src="/media/icons/tabs/icon_bullet.svg">
-                            </div>
-                        </a>
-                    </div>
-                </template>
-            </section>
-        </template>
-    </div>
+                </section>
+            </template>
+        </div>
+    </main>
 
     <!--ALPINE DATA INSERTION-->
     <script>
@@ -138,6 +142,23 @@
                 }
             ]
             const pubData = [
+                {    
+                    skills: "List of skills you used working on this.",
+                    name: "DC Thomson",
+                    icon: "DC-Thomson-Mini-Logo.svg",
+                    works: {
+                        work1: {
+                            image: "animals.webp",
+                            title: "Animals and You",
+                            role: "Role"
+                        },
+                        work2: {
+                            image: "unicorn.webp",
+                            title: "Unicorn Universe",
+                            role: "Role"
+                        }
+                    }
+                },
                 {    
                     skills: "List of skills you used working on this.",
                     name: "DC Thomson",
