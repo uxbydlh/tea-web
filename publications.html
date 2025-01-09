@@ -83,21 +83,6 @@
     <!--GENERATED PUBLICATION SECTIONS-->
     <div x-data="pubData">
         <template x-for="pub in pubData">
-            <div>  
-                <h1 x-text="pub.name"></h1>
-                <h1 x-text="pub.skills"></h1>
-            <template x-for="work in pub.works" :key="index">
-                <div>
-                    <p x-text="work.title"></p>
-                    <p x-text="work.role"></p>
-                </div>
-            </template>
-            </div>
-        </template>
-    </div>
-
-    <div x-data="pubData">
-        <template x-for="pub in pubData">
             <section class="tabbed-section">
                 <div class="section-tab">
                     <div class="section-tab-inner">
@@ -106,16 +91,21 @@
                         <img src="/media/icons/tabs/icon_bullet.svg">
                     </div>
                 </div>
-                <div class="published-work">
-                    <img>
-                    <p></p>
-                    <a>
+                <template x-for="work in pub.works">
+                    <div class="published-work">
+                        <img :src="`/media/publications/${work.image}`">
                         <div>
-                            <p></p>
-                            <img>
+                            <b x-text="work.title"></b>
+                            <p x-text="`- ${work.role}`"></p>
                         </div>
-                    </a>
-                </div>
+                        <a>
+                            <div>
+                                <p>View More</p>
+                                <img src="/media/icons/tabs/icon_bullet.svg">
+                            </div>
+                        </a>
+                    </div>
+                </template>
             </section>
         </template>
     </div>
@@ -154,10 +144,12 @@
                     icon: "DC-Thomson-Mini-Logo.svg",
                     works: {
                         work1: {
+                            image: "animals.webp",
                             title: "Animals and You",
                             role: "Role"
                         },
                         work2: {
+                            image: "unicorn.webp",
                             title: "Unicorn Universe",
                             role: "Role"
                         }
