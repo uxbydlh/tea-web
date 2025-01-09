@@ -108,9 +108,16 @@ p {
 .inline-text {
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }
 
 .view-more-btn {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.view-more-btn div {
     display: inline-flex;
     padding: 2px 8px;
     align-items: center;
@@ -556,3 +563,11 @@ p {
 }
 
 /*#endregion Highlight Card*/
+
+/*#region Work Examples*/
+
+.published-work{
+
+}
+
+/*#endregion Work Examples*/
