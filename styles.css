@@ -110,6 +110,22 @@ p {
     flex-direction: row;
 }
 
+.view-more-btn {
+    display: inline-flex;
+    padding: 2px 8px;
+    align-items: center;
+    gap: 8px;
+
+    border-radius: var(--border-radius-md);
+    border: var(--border-width-md) solid var(--border-primary);
+    background: var(--surface-page);
+    box-shadow: 2px 2px 0px 0px var(--border-action-hover);
+}
+
+.view-more-btn p {
+    margin: 0;
+}
+
 /*#endregion Global*/
 
 /*#region Header/Nav*/
