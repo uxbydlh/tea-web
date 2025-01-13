@@ -48,6 +48,11 @@
 
 body {
     background-color: var(--surface-primary);
+
+    background-image: url(/media/polka-dots.svg);
+    background-repeat: repeat-x repeat-y;
+    background-blend-mode: multiply;
+
     padding-top: 54px;
     margin: 0;
 }
