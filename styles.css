@@ -577,6 +577,16 @@ p {
 
 .published-work{
 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    max-width: 500px;
 }
 
+.published-work img{
+    max-width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+}
 /*#endregion Work Examples*/
