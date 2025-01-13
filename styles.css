@@ -163,6 +163,7 @@ p {
 #header-container {
     width: 100%;
     display: flex;
+    z-index: 2;
 }
 
 .header {
@@ -258,6 +259,7 @@ p {
     align-items: center;
 
     position: absolute;
+    z-index: 0;
 
     border-radius: var(--border-radius-round);
     border: var(--border-width-md) solid var(--border-primary);
@@ -445,6 +447,11 @@ p {
     gap: 8px;
     align-self: stretch;
     border-bottom: var(--border-width-md) solid var(--border-primary);
+
+    position: sticky;
+    top: 52px;
+    background-color: var(--surface-primary);
+    z-index: 1;
 }
 
 .section-tab-inner {
