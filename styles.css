@@ -475,6 +475,8 @@ p {
     align-self: stretch;
 
     background: var(--surface-page);
+
+    border-bottom: var(--border-width-md) solid var(--border-primary);
 }
 
 .highlight-card {
