@@ -94,21 +94,21 @@
                         </div>
                     </div>
                     <div class="tab-container">
-                        <template x-for="work in pub.works">
-                            <div class="published-work">
-                                <img :src="`/media/publications/${work.image}`">
-                                <div class=inline-text>
-                                    <p><b x-text="work.title"></b></p>
-                                    <p x-text="`&nbsp- ${work.role}`"></p>
-                                </div>
-                                <a href="#" class="view-more-btn">
-                                    <div>
-                                        <p>View More</p>
-                                        <img src="/media/icons/buttons/arrow_right.svg">
+                            <template x-for="work in pub.works">
+                                <div class="published-work">
+                                    <img :src="`/media/publications/${work.image}`">
+                                    <div class=inline-text>
+                                        <p><b x-text="work.title"></b></p>
+                                        <p x-text="`&nbsp- ${work.role}`"></p>
                                     </div>
-                                </a>
-                            </div>
-                        </template>
+                                    <a href="#" class="view-more-btn">
+                                        <div>
+                                            <p>View More</p>
+                                            <img src="/media/icons/buttons/arrow_right.svg">
+                                        </div>
+                                    </a>
+                                </div>
+                            </template>
                     </div>
                 </section>
             </template>
@@ -157,7 +157,22 @@
                             image: "unicorn.webp",
                             title: "Unicorn Universe",
                             role: "Role"
-                        }
+                        },
+                        work3: {
+                            image: "unicorn.webp",
+                            title: "Unicorn Universe",
+                            role: "Role"
+                        },
+                        work4: {
+                            image: "unicorn.webp",
+                            title: "Unicorn Universe",
+                            role: "Role"
+                        },
+                        work5: {
+                            image: "unicorn.webp",
+                            title: "Unicorn Universe",
+                            role: "Role"
+                        },
                     }
                 },
                 {    
@@ -177,6 +192,7 @@
                         }
                     }
                 },
+                
             ]
             Alpine.data('highlightData', () => ({
                 get highlightData() {return highlightData}

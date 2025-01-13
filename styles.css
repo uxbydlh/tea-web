@@ -434,10 +434,6 @@ p {
     gap: 8px;
     align-self: stretch;
     border-bottom: var(--border-width-md) solid var(--border-primary);
-
-    position: sticky;
-    top: 53px;
-    background: var(--surface-primary);
 }
 
 .section-tab-inner {
