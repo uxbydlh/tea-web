@@ -115,6 +115,8 @@ p {
     display: flex;
     align-content: center;
     justify-content: center;
+    
+    text-decoration: none;
 }
 
 .view-more-btn div {
@@ -129,8 +131,14 @@ p {
     box-shadow: 2px 2px 0px 0px var(--border-action-hover);
 }
 
+.view-more-btn div:hover {
+    background: var(--surface-action-hover-2);
+    color: var(--text-action-hover);
+}
+
 .view-more-btn p {
     margin: 0;
+    color: var(--text-body);
 }
 
 /*#endregion Global*/
