@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <!--tells browser how to control dimensions and scaling-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--suggested theme colour for page and surrounding  ui. Baby pink.-->
+    <meta name="theme-color" content="#feeaf1">
+    <title>T. Catt</title>
+
+    <!--TODO: change to real icons/favicons when provided-->
+    <link rel="apple-touch-icon" sizes="180x180" href="#">
+    <link rel="icon" type="image/png" sizes="32x32" href="#">
+    <link rel="icon" type="image/png" sizes="16x16" href="#">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono|Sometype+Mono">
+
+    <!--stylesheet(s)-->
+    <link href="styles.css" rel="stylesheet"/>
+
+    <!--jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!--Alpine js: allows us to make hover selections in real time with the project button components-->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js"></script>
+</head>
+
+<body>
+
+    
+        <div id="header-container"></div>
+        <script>
+            $(function(){
+                $("#header-container").load("components/header.html");
+            })
+        </script>
+
+<main>
+        <!--EISNER NOMINATED-->
+        <section class="blurb-box">
+            <div class="blurb-heading">
+                <img src="/media/header-dot.svg">
+                <h5>Social Media</h5>
+                <img src="/media/header-dot.svg">
+            </div>
+            <div class="blurb">
+                <p>
+                    Short introduction to the social media page,
+                    in your own words (if desired).
+                </p>
+            </div>
+        </section>
+
+        <!--GENERATED PUBLICATION SECTIONS-->
+        <div x-data="pubData" class="tab-collection">
+            <template x-for="pub in pubData">
+                <section class="tabbed-section">
+                    <div class="section-tab">
+                        <div class="section-tab-inner">
+                            <img :src="`/media/icons/social-media/${pub.icon}`" class="section-tab-icon">
+                            <h5 x-text=pub.name></h5>
+                            <img src="/media/icons/tabs/icon_bullet.svg">
+                        </div>
+                    </div>
+                    <div class="tab-container">
+                            <template x-for="work in pub.works">
+                                <div class="published-work">
+
+                                    <!--SLIDES-->
+
+                                    <template x-for="image in work.images" :key="slide">   
+                                        <!--<div x-show="activeSlide === slide">
+                                            <img :src="`/media/publications/${slide}`">
+                                        </div> !-->
+                                        <p>test</p>
+                                    </template>
+
+                                    <!--PREV/NEXT ARROWS-->
+                                    <div>
+                                        <div>
+                                            <button x-on:click="activeSlide = activeSlide === 1 ? slides.length : activeSlide - 1">
+                                                &#8592;
+                                            </button>
+                                        </div>
+                                        <div>
+                                            <button x-on:click="activeSlide = activeSlide === slides.length ? 1 : activeSlide + 1">
+                                                &#8594;
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!--BUTTONS-->
+                                    <div>
+                                        <template x-for="image in work.images" :key="slide">
+                                            <button x-on:click="activeSlide = slide"></button>
+                                        </template>
+                                    </div>
+
+                                    <div class=inline-text>
+                                        <p><b x-text="work.title"></b></p>
+                                        <p x-text="`&nbsp- ${work.role}`"></p>
+                                    </div>
+
+
+                                </div>
+                            </template>
+                    </div>
+                </section>
+            </template>
+        </div>
+    </main>
+
+    <!--ALPINE DATA INSERTION-->
+    <script>
+        document.addEventListener('alpine:init', () => {
+            const pubData = [
+                {    
+                    skills: "List of skills you used working on this.",
+                    name: "DC Thomson",
+                    icon: "DC-Thomson-Mini-Logo.svg",
+                    works: {
+                        work1: {
+                            images: {
+                                image1: "animals.webp",
+                                image2: "f-m-other.webp",
+                                image3: "sensory-spectrum.webp"
+                            },
+                            title: "Animals and You",
+                            role: "Role"
+                        },
+                        work2: {
+                            image: "unicorn.webp",
+                            title: "Unicorn Universe",
+                            role: "Role"
+                        },
+                    }
+                },
+                {    
+                    skills: "List of skills you used working on this.",
+                    name: "Knight Errant Press",
+                    icon: "KI-Press.svg",
+                    works: {
+                        work1: {
+                            image: "f-m-other.webp",
+                            title: "F, M or Other",
+                            role: "Role"
+                        },
+                    }
+                },
+                {    
+                    skills: "List of skills you used working on this.",
+                    name: "Andrews McMeel Publishing",
+                    icon: "AMMPub.svg",
+                    works: {
+                        work1: {
+                            image: "sensory-spectrum.webp",
+                            title: "SENSORY: Life on the Spectrum",
+                            role: "Role"
+                        },
+                    }
+                },
+                {    
+                    skills: "List of skills you used working on this.",
+                    name: "PSP Media Group",
+                    icon: "PSP-Media.svg",
+                    works: {
+                        work1: {
+                            image: "test-card.png",
+                            title: "Visit Scotland Brochures",
+                            role: "Role"
+                        },
+                        work2: {
+                            image: "test-card.png",
+                            title: "Bunkered",
+                            role: "Role"
+                        },
+                        work3: {
+                            image: "test-card.png",
+                            title: "English & Scottish Club Golfer",
+                            role: "Role"
+                        },
+                    }
+                },
+                
+            ]
+            Alpine.data('highlightData', () => ({
+                get highlightData() {return highlightData}
+            }))
+            Alpine.data('pubData', () => ({
+                get pubData() {return pubData}
+            }))
+        })
+    </script>
+
+</body>
+</html>
