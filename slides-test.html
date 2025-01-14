@@ -49,6 +49,14 @@
                     <button x-on:click="object.activeSlide = object.activeSlide === object.slides.length ? 1 : object.activeSlide + 1">
                         &#8594;
                     </button>
+
+                    <!--EXACT BUTTONS-->
+                    <div>
+                        <template x-for="slide in object.slides" :key="slide.id">
+                            <button x-text="slide.id" x-on:click="object.activeSlide = slide.id"></button>
+                        </template>
+                    </div>
+                    
                 </div>
 
                         
