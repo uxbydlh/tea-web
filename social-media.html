@@ -25,16 +25,16 @@
 
 <body>
 
-    
-        <div id="header-container"></div>
-        <script>
-            $(function(){
-                $("#header-container").load("components/header.html");
-            })
-        </script>
+    <div id="header-container"></div>
+    <script>
+        $(function(){
+            $("#header-container").load("components/header.html");
+        })
+    </script>
 
-<main>
-        <!--EISNER NOMINATED-->
+    <main>
+
+        <!--PAGE BLURB-->
         <section class="blurb-box">
             <div class="blurb-heading">
                 <img src="/media/header-dot.svg">
@@ -49,146 +49,165 @@
             </div>
         </section>
 
-        <!--GENERATED PUBLICATION SECTIONS-->
-        <div x-data="pubData" class="tab-collection">
-            <template x-for="pub in pubData">
+        <!--TABS OF CONTENT-->
+        <div x-data="categoryData" class="tab-collection">
+            <template x-for="cat in categoryData">
                 <section class="tabbed-section">
+
                     <div class="section-tab">
                         <div class="section-tab-inner">
-                            <img :src="`/media/icons/social-media/${pub.icon}`" class="section-tab-icon">
-                            <h5 x-text=pub.name></h5>
+                            <img :src="`/media/icons/social-media/${cat.icon}`" class="section-tab-icon">
+                            <h5 x-text="cat.name"></h5>
                             <img src="/media/icons/tabs/icon_bullet.svg">
                         </div>
                     </div>
+
                     <div class="tab-container">
-                            <template x-for="work in pub.works">
-                                <div class="published-work">
 
-                                    <!--SLIDES-->
+                        <!--Actual Slides-->
+                        <template x-for="prod in cat.products">
+                            
+                            <div>
+                                <!--SLIDES-->
+                                <template x-for="slide in prod.slides" :key="slide.id">
+                                    <div x-show="prod.activeSlide === slide.id">
+                                        <img style="max-width: 300px; max-height: 100%;"
+                                        :src="`/media/social-media/${slide.imgSrc}`">
+                                    </div>       
+                                </template>
 
-                                    <template x-for="image in work.images" :key="slide">   
-                                        <!--<div x-show="activeSlide === slide">
-                                            <img :src="`/media/publications/${slide}`">
-                                        </div> !-->
-                                        <p>test</p>
+                                <!--BUTTONS-->
+
+                                <button x-on:click="prod.activeSlide = prod.activeSlide === 1 ? prod.slides.length : prod.activeSlide - 1">
+                                    &#8592;
+                                </button>
+                                <button x-on:click="prod.activeSlide = prod.activeSlide === prod.slides.length ? 1 : prod.activeSlide + 1">
+                                    &#8594;
+                                </button>
+
+                                <!--EXACT BUTTONS-->
+                                <div>
+                                    <template x-for="slide in prod.slides" :key="slide.id">
+                                        <button x-text="slide.id" x-on:click="prod.activeSlide = slide.id"></button>
                                     </template>
-
-                                    <!--PREV/NEXT ARROWS-->
-                                    <div>
-                                        <div>
-                                            <button x-on:click="activeSlide = activeSlide === 1 ? slides.length : activeSlide - 1">
-                                                &#8592;
-                                            </button>
-                                        </div>
-                                        <div>
-                                            <button x-on:click="activeSlide = activeSlide === slides.length ? 1 : activeSlide + 1">
-                                                &#8594;
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <!--BUTTONS-->
-                                    <div>
-                                        <template x-for="image in work.images" :key="slide">
-                                            <button x-on:click="activeSlide = slide"></button>
-                                        </template>
-                                    </div>
-
-                                    <div class=inline-text>
-                                        <p><b x-text="work.title"></b></p>
-                                        <p x-text="`&nbsp- ${work.role}`"></p>
-                                    </div>
-
-
                                 </div>
-                            </template>
+                                
+                            </div>
+                        </template>
+
+                        <p x-text="cat.skills"></p>
+
                     </div>
                 </section>
             </template>
         </div>
+
     </main>
 
-    <!--ALPINE DATA INSERTION-->
-    <script>
-        document.addEventListener('alpine:init', () => {
-            const pubData = [
-                {    
-                    skills: "List of skills you used working on this.",
-                    name: "DC Thomson",
-                    icon: "DC-Thomson-Mini-Logo.svg",
-                    works: {
-                        work1: {
-                            images: {
-                                image1: "animals.webp",
-                                image2: "f-m-other.webp",
-                                image3: "sensory-spectrum.webp"
-                            },
-                            title: "Animals and You",
-                            role: "Role"
-                        },
-                        work2: {
-                            image: "unicorn.webp",
-                            title: "Unicorn Universe",
-                            role: "Role"
-                        },
-                    }
-                },
-                {    
-                    skills: "List of skills you used working on this.",
-                    name: "Knight Errant Press",
-                    icon: "KI-Press.svg",
-                    works: {
-                        work1: {
-                            image: "f-m-other.webp",
-                            title: "F, M or Other",
-                            role: "Role"
-                        },
-                    }
-                },
-                {    
-                    skills: "List of skills you used working on this.",
-                    name: "Andrews McMeel Publishing",
-                    icon: "AMMPub.svg",
-                    works: {
-                        work1: {
-                            image: "sensory-spectrum.webp",
-                            title: "SENSORY: Life on the Spectrum",
-                            role: "Role"
-                        },
-                    }
-                },
-                {    
-                    skills: "List of skills you used working on this.",
-                    name: "PSP Media Group",
-                    icon: "PSP-Media.svg",
-                    works: {
-                        work1: {
-                            image: "test-card.png",
-                            title: "Visit Scotland Brochures",
-                            role: "Role"
-                        },
-                        work2: {
-                            image: "test-card.png",
-                            title: "Bunkered",
-                            role: "Role"
-                        },
-                        work3: {
-                            image: "test-card.png",
-                            title: "English & Scottish Club Golfer",
-                            role: "Role"
-                        },
-                    }
-                },
-                
-            ]
-            Alpine.data('highlightData', () => ({
-                get highlightData() {return highlightData}
-            }))
-            Alpine.data('pubData', () => ({
-                get pubData() {return pubData}
-            }))
-        })
-    </script>
+        <!--ALPINE DATA INSERTION-->
+        <script>
+            document.addEventListener('alpine:init', () => {
+                const categoryData = [
+                    {
+                        name: "Motion",
+                        icon: "",
+                        skills: "List of skills you may have learned and used here",
+                        products: [
+                            {
+                                title: "Slime Factory",
+                                role: "Role",
 
+                                activeSlide: 1,
+                                slides: [
+                                    {
+                                        id: 1,
+                                        imgSrc: 'ice-cream.gif',
+                                        imgAlt: 'ice cream gif description',
+                                    },
+                                    {
+                                        id: 2,
+                                        imgSrc: 'monday-roll.gif',                    
+                                        imgAlt: 'dinosaur rolling into some slime',                
+                                    },
+                                    {
+                                        id: 3,
+                                        imgSrc: 'monster-make.gif',                    
+                                        imgAlt: 'halloween type gif',                
+                                    }
+                                ]
+                            },
+                            {
+                                title: "110% Gaming",
+                                role: "Role",
+
+                                activeSlide: 1,
+                                slides: [
+                                    {
+                                        id: 1,
+                                        imgSrc: 'gaming-turns-5.gif',
+                                        imgAlt: 'PLACEHOLDER',
+                                    },
+                                    {
+                                        id: 2,
+                                        imgSrc: 'poke-monday.gif',
+                                        imgAlt: 'PLACEHOLDER'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: "Graphic Design",
+                        icon: "",
+                        skills: "list of skills you may have learned and used here",
+                        products: [
+                            {
+                                title: "Slime Factory",
+                                role: "Role",
+
+                                activeSlide: 1,
+                                slides: [
+                                    {
+                                        id: 1,
+                                        imgSrc: 'runny-slime.webp',
+                                        imgAlt: 'PLACEHOLDER',
+                                    },
+                                    {
+                                        id: 2,
+                                        imgSrc: 'slime-joke.webp',
+                                        imgAlt: 'PLACEHOLDER',
+                                    },{
+                                        id: 3,
+                                        imgSrc: 'hanukkah-slime.webp',
+                                        imgAlt: 'PLACEHOLDER',
+                                    },
+                                ]
+                            },
+                            {
+                                title: "Unicorn Universe",
+                                role: "Role",
+
+                                activeSlide: 1,
+                                slides: [
+                                    {
+                                        id: 1,
+                                        imgSrc: 'giant-pen.webp',
+                                        imgAlt: 'PLACEHOLDER',
+                                    },
+                                    {
+                                        id: 2,
+                                        imgSrc: 'out-now.webp',
+                                        imgAlt: 'PLACEHOLDER',
+                                    },
+                                ]
+                            }
+                        ]
+                    } 
+                ]       
+                Alpine.data('categoryData', () => ({
+                    get categoryData() {return categoryData}
+                }))
+            })
+        </script>
 </body>
 </html>
