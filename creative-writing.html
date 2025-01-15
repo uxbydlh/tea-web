@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <!--tells browser how to control dimensions and scaling-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--suggested theme colour for page and surrounding  ui. Baby pink.-->
+    <meta name="theme-color" content="#feeaf1">
+    <title>T. Catt</title>
+
+    <!--TODO: change to real icons/favicons when provided-->
+    <link rel="apple-touch-icon" sizes="180x180" href="#">
+    <link rel="icon" type="image/png" sizes="32x32" href="#">
+    <link rel="icon" type="image/png" sizes="16x16" href="#">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono|Sometype+Mono">
+
+    <!--stylesheet(s)-->
+    <link href="styles.css" rel="stylesheet"/>
+
+    <!--jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!--Alpine js: allows us to make hover selections in real time with the project button components-->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js"></script>
+</head>
+
+<body>
+
+    
+        <div id="header-container"></div>
+        <script>
+            $(function(){
+                $("#header-container").load("components/header.html");
+            })
+        </script>
+
+<main>
+        <!--EISNER NOMINATED-->
+        <section class="blurb-box">
+            <div class="blurb-heading">
+                <img src="/media/header-dot.svg">
+                <h5>Creative Writing</h5>
+                <img src="/media/header-dot.svg">
+            </div>
+            <div class="blurb">
+                <p>
+                    Short introduction to the Creative Writing page,
+                    in your own words (if desired).
+                </p>
+            </div>
+        </section>
+
+        <!--TOP HIGHLIGHT-->
+        <section class="blurb-box">
+            <div x-data="highlightData">
+                <template x-for="hl in highlightData">
+                    <div class="highlight-card">
+                        <div class="highlight-image-frame">
+                            <img :src="`/media/highlight-card/${hl.image}`">
+                        </div>
+                        <div class="highlight-info-frame">
+                            <div class="highlight-tab-header">
+                                <div class="highlight-tab-inner">
+                                    <h6 x-text="hl.title"></h6>
+                                    <img src="/media/highlight-card/icon_highlightright.svg">
+                                </div>
+                            </div>
+                            <div class="highlight-blurb-frame">
+                                <p class="highlight-blurb" x-text="hl.blurb">
+                                </p>
+                            </div>
+                            
+                            <div class="highlight-btn-row">
+                                <template x-for="btn in hl.buttons" :key="index">
+                                    <a class="menu-btn" id="small" x-bind:href="btn.link" target="_blank" rel="noopener noreferrer">
+                                        <div class="icon-frame" id="small">
+                                            <img :src="`/media/icons/buttons/${btn.icon}`">
+                                        </div>
+                                        <p x-text="btn.text"></p>
+                                    </a>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </section>
+
+        <!--GENERATED STORY SECTIONS-->
+        <div x-data="storyData" class ="tab-collection">
+            <template x-for="story in storyData">
+                <section class="tabbed-section">
+                    <!--SECTION TAB-->
+                    <div class="section-tab">
+                        <div class="section-tab-inner">
+                            <img :src="`/media/icons/creative-writing/${story.icon}`" class="section-tab-icon">
+                            <h5 x-text="story.title"></h5>
+                            <img src="/media/icons/tabs/icon_bullet.svg">
+                        </div>
+                    </div>
+                    <!--TAB CONTENT. QUOTE AND BLURB-->
+                    <div class="tab-container">
+                        <!--QUOTE-->
+                        <div class="quote">
+                            <img src="/media/creative-writing/left-quote.svg">
+                            <p x-text="story.quote"></p>
+                            <img src="/media/creative-writing/right-quote.svg">
+                        </div>
+                        <!--GENRE AND BLURB-->
+                        <div>
+                            <b x-text="story.genre"></b>
+                            <p x-text="story.blurb"></p>
+                        </div>
+                        <!--BUTTON LINKING TO ARTICLE-->
+                        <a x-bind:href="story.link" class="view-more-btn">
+                            <div>
+                                <p>Read More</p>
+                                <img src="/media/icons/buttons/arrow_right.svg">
+                            </div>
+                        </a>
+                    </div>
+                </section>
+            </template>
+        </div>
+        
+    </main>
+
+    <!--ALPINE DATA INSERTION-->
+    <script>
+        document.addEventListener('alpine:init', () => {
+            const highlightData = [
+                {
+                    title: "Highlighted Project",
+                    blurb: "This is a short description of the project. Typically, this may be a few sentences long. One, two or three sentences just about.",
+                    image: "test_card.png",
+                    buttons: {
+                        btn1: {
+                            link: "https://www.youtube.com/c/AtomicShrimp/videos",
+                            icon: "buy.svg",
+                            text: "Buy"
+                        },
+                        btn2: {
+                            link: "#",
+                            icon: "read.svg",
+                            text: "Read"
+                        },
+                        btn3: {
+                            link: "#",
+                            icon: "icon_user.svg",
+                            text: "More"
+                        }
+                    }
+                }
+            ]
+            const storyData = [
+                {
+                    title: "The Revival",
+                    icon: "PLACEHOLDER",
+                    quote: "One day the flesh on my cheeks will wilt, \n And I will have tree rings all over, \n And I will grit my eternal teeth, weeping, \n As my peers are planted \n Down in the soil. \n",
+                    genre: "Contains death and medical themes.",
+                    blurb: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+                    link: "PLACEHOLDER",
+                },
+                {    
+                    title: "What I Went and Spent All That Money On",
+                    icon: "PLACEHOLDER",
+                    quote: "You already bought - or are about to buy - this book, so you might as well make every penny donated to your local food bank count. Do it for the orphans.",
+                    genre: "PLACEHOLDER GENRE",
+                    blurb: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+                    link: "PLACEHOLDER",
+                },
+                {    
+                    title: "Pressure On Teeth",
+                    icon: "PLACEHOLDER",
+                    quote: "PLACEHOLDER QUOTE",
+                    genre: "Horror",
+                    blurb: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+                    link: "PLACEHOLDER",
+                },
+            ]
+            Alpine.data('highlightData', () => ({
+                get highlightData() {return highlightData}
+            }))
+            Alpine.data('storyData', () => ({
+                get storyData() {return storyData}
+            }))
+        })
+    </script>
+
+</body>
+</html>
