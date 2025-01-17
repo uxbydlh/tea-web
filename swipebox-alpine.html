@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <!--tells browser how to control dimensions and scaling-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--suggested theme colour for page and surrounding  ui. Baby pink.-->
+    <meta name="theme-color" content="#feeaf1">
+    <title>T. Catt</title>
+
+    <!--TODO: change to real icons/favicons when provided-->
+    <link rel="apple-touch-icon" sizes="180x180" href="#">
+    <link rel="icon" type="image/png" sizes="32x32" href="#">
+    <link rel="icon" type="image/png" sizes="16x16" href="#">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono|Sometype+Mono">
+
+    <!--stylesheet(s)-->
+    <link href="styles.css" rel="stylesheet"/>
+    <!--swipebox css-->
+    <link rel="stylesheet" href="src/css/swipebox.css">
+
+    <!--jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!--jquery swipebox-->
+    <script src="src/js/jquery.swipebox.js"></script>
+    <!--Alpine js: allows us to make hover selections in real time with the project button components-->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js"></script>
+</head>
+
+<body>
+
+    <div id="header-container"></div>
+    <script>
+        $(function(){
+            $("#header-container").load("components/header.html");
+        })
+    </script>
+
+    <main>
+        <div x-data="objectData">
+            <template x-for="obj in objectData">
+                <a x-bind:href="obj.imgSrc" class="swipebox" title="">
+                    <img :src="`${obj.imgSrc}`" alt="">
+                </a>
+            </template>
+        </div>
+    </main>
+
+        <!--ALPINE DATA INSERTION-->
+        <script>
+            document.addEventListener('alpine:init', () => {
+                const objectData = [
+                    {
+                        imgSrc: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Longjing_tea_steeping_in_gaiwan.jpg/330px-Longjing_tea_steeping_in_gaiwan.jpg",
+                        title: "Tea",
+                        alt: "Longjing green tea being infused in a gaiwan"
+                    },
+                    {
+                        imgSrc: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Camellia_sinensis_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-025.jpg/330px-Camellia_sinensis_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-025.jpg",
+                        title: "Tea plant",
+                        alt: "Tea plant (Camellia sinensis) from Kohlers Medicinal Plants, 1897"
+                    },
+                    {
+                        imgSrc: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Shinno_%28Shennong%29_derivative.jpg/255px-Shinno_%28Shennong%29_derivative.jpg",
+                        title: "Possible Inventor of tea",
+                        alt: "A 19th-century Japanese painting depicting Shennong: Chinese legends credit Shennong with the invention of tea."
+                    },
+                    {
+                        imgSrc: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Tea_with_ingredients.jpg/330px-Tea_with_ingredients.jpg",
+                        title: "Ingredients",
+                        alt: "Tea with ingredients, China"
+                    },
+                    {
+                        imgSrc: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Gorskii_03992u.jpg/330px-Gorskii_03992u.jpg",
+                        title: "Tea Weighing",
+                        alt: "Tea-weighing station north of Batumi, Russian Empire, before 1915"
+                    },
+                ]       
+                Alpine.data('objectData', () => ({
+                    get objectData() {return objectData}
+                }))
+            })
+        </script>
+
+        <!--BIND SWIPEBOX TO ALL LINKS CLASSED SWIPEBOX-->
+        <script type="text/javascript">
+            ;(function($) {
+                $('.swipebox').swipebox();
+            }) (jQuery);
+        </script>
+</body>
+</html>
