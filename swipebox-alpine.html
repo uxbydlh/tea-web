@@ -37,48 +37,147 @@
     </script>
 
     <main>
-        <div x-data="objectData">
-            <template x-for="obj in objectData">
-                <a x-bind:href="obj.imgSrc" class="swipebox" title="">
-                    <img :src="`${obj.imgSrc}`" alt="">
-                </a>
+        <div x-data="categoryData" class="tab-collection">
+            <template x-for="cat in categoryData">
+                <section class="tabbed-section">
+                    <!--TAB-->
+                    <div class="section-tab">
+                        <div class="section-tab-inner">
+                            <img :src="`/media/icons/illustration/${cat.icon}`">
+                            <h5 x-text="cat.name"></h5>
+                            <img src="/media/icons/tabs/icon_bullet.svg">
+                        </div>
+                    </div>
+                    <!--CONTENT-->
+                    <div class="tab-container">
+                        <template x-for="image in cat.images">
+                            <div>
+                                <a x-bind:href="`/media/illustration/big/${image.name}`" class="swipebox" x-bind:title="image.title">
+                                    <img :src="`/media/illustration/small/${image.name}`">
+                                </a>
+                                <div class="inline-text">
+                                    <p>
+                                        <b x-text="image.title"></b> 
+                                    </p>
+                                    <p x-text="`&nbsp- ${image.desc}`"></p>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </section>
             </template>
+        </div>
+        <!--COMICS SECTION-->
+           <section class="tabbed-section">
+                <div class="section-tab">
+                    <div class="section-tab-inner">
+                        <img src="/media/icons/illustrations/comics.svg" class="section-tab-icon">
+                        <h5>Comics</h5>
+                        <img src="/media/icons/tabs/icon_bullet.svg">
+                    </div>
+                </div>
+                <div class="tab-container" x-data="comicsData">
+                    <!--SLIDESHOW FORMAT-->
+                    <template x-for="comic in comicsData">
+                        <div>
+                            <!--SLIDES-->
+                            <template x-for="slide in comic.slides" :key="slide.id">
+                                <div x-show="comic.activeSlide === slide.id">
+                                    <a x-bind:href="`/media/illustration/comics/big/${slide.name}`" class="swipebox" x-bind:title="slide.title">
+                                        <img :src="`/media/illustration/comics/small/${slide.name}`" style="max-width: 300px; max-height: 100%;">
+                                    </a>
+                                    <div class="inline-text">
+                                        <p>
+                                            <b x-text="image.title"></b> 
+                                        </p>
+                                        <p x-text="`&nbsp- ${image.desc}`"></p>
+                                    </div>
+                                </div>
+                            </template>
+                            <!--BUTTONS-->
+                            <button x-on:click="comic.activeSlide = comic.activeSlide === 1 ? comic.slides.length : comic.activeSlide - 1">
+                                &#8592;
+                            </button>
+                            <button x-on:click="comic.activeSlide = comic.activeSlide === comic.slides.length ? 1 : comic.activeSlide + 1">
+                                &#8594;
+                            </button>
+                            <!--EXACT PAGE BUTTONS-->
+                            <div>
+                                <template x-for="slide in comic.slides" :key="slide.id">
+                                    <button x-text="slide.id" x-on:click="comic.activeSlide = slide.id"></button>
+                                </template>
+                            </div>
+                        </div>
+                    </template>
+            </section>
+            
         </div>
     </main>
 
         <!--ALPINE DATA INSERTION-->
         <script>
             document.addEventListener('alpine:init', () => {
-                const objectData = [
+                const categoryData = [
                     {
-                        imgSrc: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Longjing_tea_steeping_in_gaiwan.jpg/330px-Longjing_tea_steeping_in_gaiwan.jpg",
-                        title: "Tea",
-                        alt: "Longjing green tea being infused in a gaiwan"
-                    },
+                        name: "Motion",
+                        icon: "",
+                        images: [
+                            {
+                                name: "alice.gif",
+                                title: "PLACEHOLDER TITLE",
+                                desc: "PLACEHOLDER DESC",
+                            },
+                            {
+                                name: "cat.gif",
+                                title: "PLACEHOLDER TITLE",
+                                desc: "PLACEHOLDER DESC",
+                            },
+                            {
+                                name: "fairy.gif",
+                                title: "PLACEHOLDER TITLE",
+                                desc: "PLACEHOLDER DESC",
+                            },
+                            {
+                                name: "mermaid.gif",
+                                title: "PLACEHOLDER TITLE",
+                                desc: "PLACEHOLDER DESC",
+                            },
+                            {
+                                name: "treasure.gif",
+                                title: "PLACEHOLDER TITLE",
+                                desc: "PLACEHOLDER DESC",
+                            },
+                        ]
+                    }
+                ]
+                const comicsData = [
                     {
-                        imgSrc: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Camellia_sinensis_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-025.jpg/330px-Camellia_sinensis_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-025.jpg",
-                        title: "Tea plant",
-                        alt: "Tea plant (Camellia sinensis) from Kohlers Medicinal Plants, 1897"
-                    },
-                    {
-                        imgSrc: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Shinno_%28Shennong%29_derivative.jpg/255px-Shinno_%28Shennong%29_derivative.jpg",
-                        title: "Possible Inventor of tea",
-                        alt: "A 19th-century Japanese painting depicting Shennong: Chinese legends credit Shennong with the invention of tea."
-                    },
-                    {
-                        imgSrc: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Tea_with_ingredients.jpg/330px-Tea_with_ingredients.jpg",
-                        title: "Ingredients",
-                        alt: "Tea with ingredients, China"
-                    },
-                    {
-                        imgSrc: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Gorskii_03992u.jpg/330px-Gorskii_03992u.jpg",
-                        title: "Tea Weighing",
-                        alt: "Tea-weighing station north of Batumi, Russian Empire, before 1915"
-                    },
-                ]       
-                Alpine.data('objectData', () => ({
-                    get objectData() {return objectData}
-                }))
+                        title: "Comic One PLACEHOLDER",
+                        desc: "PLACEHOLDER DESC",
+
+                        activeSlide: 1,
+                        slides: [
+                            {
+                                id: 1,
+                                name: 'autism-1.png'
+                            },
+                            {
+                                id: 2,
+                                name: 'autism-2.png'
+                            },
+                            {
+                                id: 3,
+                                name: 'autism-3.png'
+                            }
+                        ]
+                    }
+                ];       
+                Alpine.data('categoryData', () => ({
+                    get categoryData() {return categoryData}
+                }));
+                Alpine.data('comicsData', () => ({
+                    get comicsData() {return comicsData}
+                }));
             })
         </script>
 
