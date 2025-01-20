@@ -43,7 +43,7 @@
                     <!--TAB-->
                     <div class="section-tab">
                         <div class="section-tab-inner">
-                            <img :src="`/media/icons/illustration/${cat.icon}`">
+                            <img :src="`/media/icons/tabs/${cat.icon}`" class="section-tab-icon">
                             <h5 x-text="cat.name"></h5>
                             <img src="/media/icons/tabs/icon_bullet.svg">
                         </div>
@@ -71,7 +71,7 @@
            <section class="tabbed-section">
                 <div class="section-tab">
                     <div class="section-tab-inner">
-                        <img src="/media/icons/illustrations/comics.svg" class="section-tab-icon">
+                        <img src="/media/icons/tabs/book-open-text-light.svg" class="section-tab-icon">
                         <h5>Comics</h5>
                         <img src="/media/icons/tabs/icon_bullet.svg">
                     </div>
@@ -120,7 +120,7 @@
                 const categoryData = [
                     {
                         name: "Motion",
-                        icon: "",
+                        icon: "film-strip-light.svg",
                         images: [
                             {
                                 name: "alice.gif",

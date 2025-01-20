@@ -92,7 +92,7 @@
                     <!--SECTION TAB-->
                     <div class="section-tab">
                         <div class="section-tab-inner">
-                            <img :src="`/media/icons/creative-writing/${story.icon}`" class="section-tab-icon">
+                            <img :src="`/media/icons/tabs/${story.icon}`" class="section-tab-icon">
                             <h5 x-text="story.title"></h5>
                             <img src="/media/icons/tabs/icon_bullet.svg">
                         </div>
@@ -101,9 +101,9 @@
                     <div class="tab-container">
                         <!--QUOTE-->
                         <div class="quote">
-                            <img src="/media/creative-writing/left-quote.svg">
+                            <img src="/media/icons/tabs/quotes-light.svg" style="transform: scaleX(-1) scaleY(-1)">
                             <p x-text="story.quote"></p>
-                            <img src="/media/creative-writing/right-quote.svg">
+                            <img src="/media/icons/tabs/quotes-light.svg">
                         </div>
                         <!--GENRE AND BLURB-->
                         <div>
@@ -135,17 +135,17 @@
                     buttons: {
                         btn1: {
                             link: "https://www.youtube.com/c/AtomicShrimp/videos",
-                            icon: "buy.svg",
+                            icon: "gift.svg",
                             text: "Buy"
                         },
                         btn2: {
                             link: "#",
-                            icon: "read.svg",
+                            icon: "book-open.svg",
                             text: "Read"
                         },
                         btn3: {
                             link: "#",
-                            icon: "icon_user.svg",
+                            icon: "dots-three.svg",
                             text: "More"
                         }
                     }
@@ -154,7 +154,7 @@
             const storyData = [
                 {
                     title: "The Revival",
-                    icon: "PLACEHOLDER",
+                    icon: "skull-light.svg",
                     quote: "Those revived may find it helpful to think of the here and now, and to live as they did once before. Try to take this time to appreciate the beautiful world around you once again.",
                     genre: "Contains death and medical themes.",
                     blurb: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -162,7 +162,7 @@
                 },
                 {    
                     title: "What I Went and Spent All That Money On",
-                    icon: "PLACEHOLDER",
+                    icon: "coin-light.svg",
                     quote: "You already bought - or are about to buy - this book, so you might as well make every penny donated to your local food bank count. Do it for the orphans.",
                     genre: "PLACEHOLDER GENRE",
                     blurb: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -170,7 +170,7 @@
                 },
                 {    
                     title: "Pressure On Teeth",
-                    icon: "PLACEHOLDER",
+                    icon: "tooth-light.svg",
                     quote: "PLACEHOLDER QUOTE",
                     genre: "Horror",
                     blurb: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
