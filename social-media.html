@@ -49,6 +49,42 @@
             </div>
         </section>
 
+        <!--TOP HIGHLIGHT-->
+        <section class="blurb-box">
+            <div x-data="highlightData">
+                <template x-for="hl in highlightData">
+                    <div class="highlight-card">
+                        <div class="highlight-image-frame">
+                            <img :src="`/media/highlight-card/${hl.image}`">
+                        </div>
+                        <div class="highlight-info-frame">
+                            <div class="highlight-tab-header">
+                                <div class="highlight-tab-inner">
+                                    <h6 x-text="hl.title"></h6>
+                                    <img src="/media/highlight-card/icon_highlightright.svg">
+                                </div>
+                            </div>
+                            <div class="highlight-blurb-frame">
+                                <p class="highlight-blurb" x-text="hl.blurb">
+                                </p>
+                            </div>
+                            
+                            <div class="highlight-btn-row">
+                                <template x-for="btn in hl.buttons" :key="index">
+                                    <a class="menu-btn" id="small" x-bind:href="btn.link" target="_blank" rel="noopener noreferrer">
+                                        <div class="icon-frame" id="small">
+                                            <img :src="`/media/icons/buttons/${btn.icon}`">
+                                        </div>
+                                        <p x-text="btn.text"></p>
+                                    </a>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </section>
+
         <!--TABS OF CONTENT-->
         <div x-data="categoryData" class="tab-collection">
             <template x-for="cat in categoryData">
@@ -107,6 +143,30 @@
         <!--ALPINE DATA INSERTION-->
         <script>
             document.addEventListener('alpine:init', () => {
+                const highlightData = [
+                {
+                    title: "Highlighted Project",
+                    blurb: "This is a short description of the project. Typically, this may be a few sentences long. One, two or three sentences just about.",
+                    image: "test_card.png",
+                    buttons: {
+                        btn1: {
+                            link: "https://www.youtube.com/c/AtomicShrimp/videos",
+                            icon: "gift.svg",
+                            text: "Buy"
+                        },
+                        btn2: {
+                            link: "#",
+                            icon: "book-open.svg",
+                            text: "Read"
+                        },
+                        btn3: {
+                            link: "#",
+                            icon: "dots-three.svg",
+                            text: "More"
+                        }
+                    }
+                }
+            ]
                 const categoryData = [
                     {
                         name: "Motion",
@@ -203,7 +263,10 @@
                             }
                         ]
                     } 
-                ]       
+                ]
+                Alpine.data('highlightData', () => ({
+                get highlightData() {return highlightData}
+                }))       
                 Alpine.data('categoryData', () => ({
                     get categoryData() {return categoryData}
                 }))
