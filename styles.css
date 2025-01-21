@@ -503,6 +503,20 @@ p {
     border-right: var(--border-width-md) solid var(--border-primary);
 }
 
+.swipebox {
+    display: flex;
+    align-self: stretch;
+    justify-content: center;
+    overflow: hidden;
+    max-height: 500px;
+}
+
+.tab-container-image {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
 .highlight-card {
     display: flex;
     flex-direction: column;
