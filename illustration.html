@@ -102,18 +102,16 @@
                         </div>
                     </div>
                     <!--CONTENT-->
-                    <div class="tab-container" >
+                    <div class="tab-container-grid">
                         <template x-for="image in cat.images">
-                            <div>
+                            <div style="text-align: center;">
                                 <a x-bind:href="`/media/illustration/big/${image.name}`" class="swipebox" x-bind:title="image.title">
                                     <img :src="`/media/illustration/small/${image.name}`" class="tab-container-image">
                                 </a>
-                                <div class="inline-text">
-                                    <p>
-                                        <b x-text="image.title"></b> 
-                                    </p>
-                                    <p x-text="`&nbsp- ${image.desc}`"></p>
-                                </div>
+                                <p>
+                                    <b x-text="image.title"></b> 
+                                </p>
+                                <p x-text="image.desc"></p>
                             </div>
                         </template>
                     </div>

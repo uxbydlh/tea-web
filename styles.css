@@ -503,6 +503,22 @@ p {
     border-right: var(--border-width-md) solid var(--border-primary);
 }
 
+.tab-container-grid {
+    display: flex;
+    padding: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    
+
+    background: var(--surface-page);
+
+    border-bottom: var(--border-width-md) solid var(--border-primary);
+    border-left: var(--border-width-md) solid var(--border-primary);
+    border-right: var(--border-width-md) solid var(--border-primary);
+}
+
+
 .swipebox {
     display: flex;
     align-self: stretch;
