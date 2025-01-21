@@ -518,6 +518,31 @@ p {
     border-right: var(--border-width-md) solid var(--border-primary);
 }
 
+.slide-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide-button {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--border-radius-round);
+    border: var(--border-width-md) solid var(--border-primary);
+    background: var(--surface-page);
+}
+
+.slide-button:hover{
+    background: var(--surface-action-hover-2);
+    cursor: pointer;
+}
+
+.slide-button img{
+    max-width: 32px;
+}
 
 .swipebox {
     display: flex;
@@ -525,6 +550,36 @@ p {
     justify-content: center;
     overflow: hidden;
     max-height: 500px;
+}
+
+.page-button-container {
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.page-button {
+    width: 24px;
+    height: 24px;
+    border-radius: var(--border-radius-round);
+    border: var(--border-width-md) solid var(--border-primary);
+    background: var(--surface-page)
+}
+
+.page-button:hover {
+    border-radius: var(--border-radius-round);
+    border: var(--border-width-md) solid var(--border-action-hover);
+    background: var(--surface-action-hover-2);
+    cursor: pointer;
+}
+
+.page-button-selected {
+    width: 24px;
+    height: 24px;
+    border-radius: var(--border-radius-round);
+    border: var(--border-width-md) solid var(--border-action);
+    background: var(--border-action)
 }
 
 .tab-container-image {

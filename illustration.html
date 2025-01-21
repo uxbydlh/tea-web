@@ -131,32 +131,42 @@
             <div class="tab-container" x-data="comicsData">
                 <!--SLIDESHOW FORMAT-->
                 <template x-for="comic in comicsData">
+                    <!--ENCAPSULATING DIV FOR ENTIRE TEMPLATE-->
                     <div>
-                        <!--SLIDES-->
-                        <template x-for="slide in comic.slides" :key="slide.id">
-                            <div x-show="comic.activeSlide === slide.id">
-                                <a x-bind:href="`/media/illustration/comics/big/${slide.name}`" class="swipebox" x-bind:title="slide.title">
-                                    <img :src="`/media/illustration/comics/small/${slide.name}`" class="tab-container-image">
-                                </a>
-                                <div class="inline-text">
-                                    <p>
-                                        <b x-text="image.title"></b> 
-                                    </p>
-                                    <p x-text="`&nbsp- ${image.desc}`"></p>
-                                </div>
-                            </div>
-                        </template>
-                        <!--BUTTONS-->
-                        <button x-on:click="comic.activeSlide = comic.activeSlide === 1 ? comic.slides.length : comic.activeSlide - 1">
-                            &#8592;
-                        </button>
-                        <button x-on:click="comic.activeSlide = comic.activeSlide === comic.slides.length ? 1 : comic.activeSlide + 1">
-                            &#8594;
-                        </button>
-                        <!--EXACT PAGE BUTTONS-->
-                        <div>
+                        <!--DIV TO HANDLE FLEX FOR BUTTONS AND SLIDES-->
+                        <div class="slide-container">
+                            <!--BACK BUTTON-->
+                            <button class="slide-button" x-on:click="comic.activeSlide = comic.activeSlide === 1 ? comic.slides.length : comic.activeSlide - 1">
+                                <img src="/media/icons/buttons/arrow-left-light.svg">
+                            </button>
+                            <!--SLIDES-->
                             <template x-for="slide in comic.slides" :key="slide.id">
-                                <button x-text="slide.id" x-on:click="comic.activeSlide = slide.id"></button>
+                                <div x-show="comic.activeSlide === slide.id">
+                                    <a x-bind:href="`/media/illustration/comics/big/${slide.name}`" class="swipebox" x-bind:title="slide.title">
+                                        <img :src="`/media/illustration/comics/small/${slide.name}`" class="tab-container-image">
+                                    </a>
+                                    <div class="inline-text">
+                                        <p>
+                                            <b x-text="image.title"></b> 
+                                        </p>
+                                        <p x-text="`&nbsp- ${image.desc}`"></p>
+                                    </div>
+                                </div>
+                            </template>
+                            <!--FORWARD BUTTON-->
+                            <button class="slide-button" x-on:click="comic.activeSlide = comic.activeSlide === comic.slides.length ? 1 : comic.activeSlide + 1">
+                                <img src="/media/icons/buttons/arrow-right-light.svg">
+                            </button>
+                        </div>
+                        <!--EXACT PAGE BUTTONS-->
+                        <div class="page-button-container">
+                            <template x-for="slide in comic.slides" :key="slide.id">
+                                <button class="page-button"
+                                :class="{
+                                    'page-button-selected': comic.activeSlide === slide.id,
+                                    'page-button': comic.activeSlide !== slide.id
+                                }"
+                                x-on:click="comic.activeSlide = slide.id"></button>
                             </template>
                         </div>
                     </div>
