@@ -15,14 +15,14 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono|Sometype+Mono">
 
     <!--stylesheet(s)-->
-    <link href="styles.css" rel="stylesheet"/>
+    <link href="../styles.css" rel="stylesheet"/>
     <!--swipebox css-->
-    <link rel="stylesheet" href="src/css/swipebox.css">
+    <link rel="stylesheet" href="../src/css/swipebox.css">
 
     <!--jquery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <!--jquery swipebox-->
-    <script src="src/js/jquery.swipebox.js"></script>
+    <script src="../src/js/jquery.swipebox.js"></script>
     <!--Alpine js: allows us to make hover selections in real time with the project button components-->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js"></script>
 </head>
@@ -32,7 +32,7 @@
     <div id="header-container"></div>
     <script>
         $(function(){
-            $("#header-container").load("components/header.html");
+            $("#header-container").load("../components/header.html");
         })
     </script>
 
@@ -41,9 +41,9 @@
         <!--BLURB-->
         <section class="blurb-box">
             <div class="blurb-heading">
-                <img src="/media/header-dot.svg">
+                <img src="../media/header-dot.svg">
                 <h5>Illustration</h5>
-                <img src="/media/header-dot.svg">
+                <img src="../media/header-dot.svg">
             </div>
             <div class="blurb">
                 <p>
@@ -59,13 +59,13 @@
                 <template x-for="hl in highlightData">
                     <div class="highlight-card">
                         <div class="highlight-image-frame">
-                            <img :src="`/media/highlight-card/${hl.image}`">
+                            <img :src="`../media/highlight-card/${hl.image}`">
                         </div>
                         <div class="highlight-info-frame">
                             <div class="highlight-tab-header">
                                 <div class="highlight-tab-inner">
                                     <h6 x-text="hl.title"></h6>
-                                    <img src="/media/highlight-card/icon_highlightright.svg">
+                                    <img src="../media/highlight-card/icon_highlightright.svg">
                                 </div>
                             </div>
                             <div class="highlight-blurb-frame">
@@ -77,7 +77,7 @@
                                 <template x-for="btn in hl.buttons" :key="index">
                                     <a class="menu-btn" id="small" x-bind:href="btn.link" target="_blank" rel="noopener noreferrer">
                                         <div class="icon-frame" id="small">
-                                            <img :src="`/media/icons/buttons/${btn.icon}`">
+                                            <img :src="`../media/icons/buttons/${btn.icon}`">
                                         </div>
                                         <p x-text="btn.text"></p>
                                     </a>
@@ -96,17 +96,17 @@
                     <!--TAB-->
                     <div class="section-tab">
                         <div class="section-tab-inner">
-                            <img :src="`/media/icons/tabs/${cat.icon}`" class="section-tab-icon">
+                            <img :src="`../media/icons/tabs/${cat.icon}`" class="section-tab-icon">
                             <h5 x-text="cat.name"></h5>
-                            <img src="/media/icons/tabs/icon_bullet.svg">
+                            <img src="../media/icons/tabs/icon_bullet.svg">
                         </div>
                     </div>
                     <!--CONTENT-->
                     <div class="tab-container-grid">
                         <template x-for="image in cat.images">
                             <div style="text-align: center;">
-                                <a x-bind:href="`/media/illustration/big/${image.name}`" class="swipebox" x-bind:title="image.title">
-                                    <img :src="`/media/illustration/small/${image.name}`" class="tab-container-image">
+                                <a x-bind:href="`../media/illustration/big/${image.name}`" class="swipebox" x-bind:title="image.title">
+                                    <img :src="`../media/illustration/small/${image.name}`" class="tab-container-image">
                                 </a>
                                 <p>
                                     <b x-text="image.title"></b> 
@@ -123,9 +123,9 @@
            <section class="tabbed-section">
             <div class="section-tab">
                 <div class="section-tab-inner">
-                    <img src="/media/icons/tabs/book-open-text-light.svg" class="section-tab-icon">
+                    <img src="../media/icons/tabs/book-open-text-light.svg" class="section-tab-icon">
                     <h5>Comics</h5>
-                    <img src="/media/icons/tabs/icon_bullet.svg">
+                    <img src="../media/icons/tabs/icon_bullet.svg">
                 </div>
             </div>
             <div class="tab-container" x-data="comicsData">
@@ -137,13 +137,13 @@
                         <div class="slide-container">
                             <!--BACK BUTTON-->
                             <button class="slide-button" x-on:click="comic.activeSlide = comic.activeSlide === 1 ? comic.slides.length : comic.activeSlide - 1">
-                                <img src="/media/icons/buttons/arrow-left-light.svg">
+                                <img src="../media/icons/buttons/arrow-left-light.svg">
                             </button>
                             <!--SLIDES-->
                             <template x-for="slide in comic.slides" :key="slide.id">
                                 <div x-show="comic.activeSlide === slide.id">
-                                    <a x-bind:href="`/media/illustration/comics/big/${slide.name}`" class="swipebox" x-bind:title="slide.title">
-                                        <img :src="`/media/illustration/comics/small/${slide.name}`" class="tab-container-image">
+                                    <a x-bind:href="`../media/illustration/comics/big/${slide.name}`" class="swipebox" x-bind:title="slide.title">
+                                        <img :src="`../media/illustration/comics/small/${slide.name}`" class="tab-container-image">
                                     </a>
                                     <div class="inline-text">
                                         <p>
@@ -155,7 +155,7 @@
                             </template>
                             <!--FORWARD BUTTON-->
                             <button class="slide-button" x-on:click="comic.activeSlide = comic.activeSlide === comic.slides.length ? 1 : comic.activeSlide + 1">
-                                <img src="/media/icons/buttons/arrow-right-light.svg">
+                                <img src="../media/icons/buttons/arrow-right-light.svg">
                             </button>
                         </div>
                         <!--EXACT PAGE BUTTONS-->

@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono|Sometype+Mono">
 
     <!--stylesheet(s)-->
-    <link href="styles.css" rel="stylesheet"/>
+    <link href="../styles.css" rel="stylesheet"/>
 
     <!--jquery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -29,21 +29,21 @@
         <div id="header-container"></div>
         <script>
             $(function(){
-                $("#header-container").load("components/header.html");
+                $("#header-container").load("../components/header.html");
             })
         </script>
 
 <main>
-        <!--BLURB-->
+        <!--EISNER NOMINATED-->
         <section class="blurb-box">
             <div class="blurb-heading">
-                <img src="/media/header-dot.svg">
-                <h5>Publications</h5>
-                <img src="/media/header-dot.svg">
+                <img src="../media/header-dot.svg">
+                <h5>Creative Writing</h5>
+                <img src="../media/header-dot.svg">
             </div>
             <div class="blurb">
                 <p>
-                    Short introduction to the publications page,
+                    Short introduction to the Creative Writing page,
                     in your own words (if desired).
                 </p>
             </div>
@@ -55,13 +55,13 @@
                 <template x-for="hl in highlightData">
                     <div class="highlight-card">
                         <div class="highlight-image-frame">
-                            <img :src="`/media/highlight-card/${hl.image}`">
+                            <img :src="`../media/highlight-card/${hl.image}`">
                         </div>
                         <div class="highlight-info-frame">
                             <div class="highlight-tab-header">
                                 <div class="highlight-tab-inner">
                                     <h6 x-text="hl.title"></h6>
-                                    <img src="/media/highlight-card/icon_highlightright.svg">
+                                    <img src="../media/highlight-card/icon_highlightright.svg">
                                 </div>
                             </div>
                             <div class="highlight-blurb-frame">
@@ -73,7 +73,7 @@
                                 <template x-for="btn in hl.buttons" :key="index">
                                     <a class="menu-btn" id="small" x-bind:href="btn.link" target="_blank" rel="noopener noreferrer">
                                         <div class="icon-frame" id="small">
-                                            <img :src="`/media/icons/buttons/${btn.icon}`">
+                                            <img :src="`../media/icons/buttons/${btn.icon}`">
                                         </div>
                                         <p x-text="btn.text"></p>
                                     </a>
@@ -85,37 +85,43 @@
             </div>
         </section>
 
-        <!--GENERATED PUBLICATION SECTIONS-->
-        <div x-data="pubData" class="tab-collection">
-            <template x-for="pub in pubData">
+        <!--GENERATED STORY SECTIONS-->
+        <div x-data="storyData" class ="tab-collection">
+            <template x-for="story in storyData">
                 <section class="tabbed-section">
+                    <!--SECTION TAB-->
                     <div class="section-tab">
                         <div class="section-tab-inner">
-                            <img :src="`/media/icons/publications/${pub.icon}`" class="section-tab-icon">
-                            <h5 x-text=pub.name></h5>
-                            <img src="/media/icons/tabs/icon_bullet.svg">
+                            <img :src="`../media/icons/tabs/${story.icon}`" class="section-tab-icon">
+                            <h5 x-text="story.title"></h5>
+                            <img src="../media/icons/tabs/icon_bullet.svg">
                         </div>
                     </div>
+                    <!--TAB CONTENT. QUOTE AND BLURB-->
                     <div class="tab-container">
-                            <template x-for="work in pub.works">
-                                <div class="published-work">
-                                    <img :src="`/media/publications/${work.image}`">
-                                    <div class=inline-text>
-                                        <p><b x-text="work.title"></b></p>
-                                        <p x-text="`&nbsp- ${work.role}`"></p>
-                                    </div>
-                                    <a href="#" class="view-more-btn">
-                                        <div>
-                                            <p>View More</p>
-                                            <img src="/media/icons/buttons/arrow_right.svg">
-                                        </div>
-                                    </a>
-                                </div>
-                            </template>
+                        <!--QUOTE-->
+                        <div class="quote">
+                            <img src="../media/icons/tabs/quotes-light.svg" style="transform: scaleX(-1) scaleY(-1)">
+                            <p x-text="story.quote"></p>
+                            <img src="../media/icons/tabs/quotes-light.svg">
+                        </div>
+                        <!--GENRE AND BLURB-->
+                        <div>
+                            <b x-text="story.genre"></b>
+                            <p x-text="story.blurb"></p>
+                        </div>
+                        <!--BUTTON LINKING TO ARTICLE-->
+                        <a x-bind:href="story.link" class="view-more-btn">
+                            <div>
+                                <p>Read More</p>
+                                <img src="../media/icons/buttons/arrow_right.svg">
+                            </div>
+                        </a>
                     </div>
                 </section>
             </template>
         </div>
+        
     </main>
 
     <!--ALPINE DATA INSERTION-->
@@ -145,77 +151,37 @@
                     }
                 }
             ]
-            const pubData = [
-                {    
-                    skills: "List of skills you used working on this.",
-                    name: "DC Thomson",
-                    icon: "DC-Thomson-Mini-Logo.svg",
-                    works: {
-                        work1: {
-                            image: "animals.webp",
-                            title: "Animals and You",
-                            role: "Role"
-                        },
-                        work2: {
-                            image: "unicorn.webp",
-                            title: "Unicorn Universe",
-                            role: "Role"
-                        },
-                    }
+            const storyData = [
+                {
+                    title: "The Revival",
+                    icon: "skull-light.svg",
+                    quote: "Those revived may find it helpful to think of the here and now, and to live as they did once before. Try to take this time to appreciate the beautiful world around you once again.",
+                    genre: "Contains death and medical themes.",
+                    blurb: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+                    link: "the-revival.html",
                 },
                 {    
-                    skills: "List of skills you used working on this.",
-                    name: "Knight Errant Press",
-                    icon: "KI-Press.svg",
-                    works: {
-                        work1: {
-                            image: "f-m-other.webp",
-                            title: "F, M or Other",
-                            role: "Role"
-                        },
-                    }
+                    title: "What I Went and Spent All That Money On",
+                    icon: "coin-light.svg",
+                    quote: "You already bought - or are about to buy - this book, so you might as well make every penny donated to your local food bank count. Do it for the orphans.",
+                    genre: "PLACEHOLDER GENRE",
+                    blurb: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+                    link: "PLACEHOLDER",
                 },
                 {    
-                    skills: "List of skills you used working on this.",
-                    name: "Andrews McMeel Publishing",
-                    icon: "AMMPub.svg",
-                    works: {
-                        work1: {
-                            image: "sensory-spectrum.webp",
-                            title: "SENSORY: Life on the Spectrum",
-                            role: "Role"
-                        },
-                    }
+                    title: "Pressure On Teeth",
+                    icon: "tooth-light.svg",
+                    quote: "PLACEHOLDER QUOTE",
+                    genre: "Horror",
+                    blurb: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+                    link: "PLACEHOLDER",
                 },
-                {    
-                    skills: "List of skills you used working on this.",
-                    name: "PSP Media Group",
-                    icon: "PSP-Media.svg",
-                    works: {
-                        work1: {
-                            image: "test-card.png",
-                            title: "Visit Scotland Brochures",
-                            role: "Role"
-                        },
-                        work2: {
-                            image: "test-card.png",
-                            title: "Bunkered",
-                            role: "Role"
-                        },
-                        work3: {
-                            image: "test-card.png",
-                            title: "English & Scottish Club Golfer",
-                            role: "Role"
-                        },
-                    }
-                },
-                
             ]
             Alpine.data('highlightData', () => ({
                 get highlightData() {return highlightData}
             }))
-            Alpine.data('pubData', () => ({
-                get pubData() {return pubData}
+            Alpine.data('storyData', () => ({
+                get storyData() {return storyData}
             }))
         })
     </script>
