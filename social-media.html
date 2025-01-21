@@ -16,9 +16,13 @@
 
     <!--stylesheet(s)-->
     <link href="styles.css" rel="stylesheet"/>
+    <!--swipebox css-->
+    <link rel="stylesheet" href="src/css/swipebox.css">
 
     <!--jquery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!--jquery swipebox-->
+    <script src="src/js/jquery.swipebox.js"></script>
     <!--Alpine js: allows us to make hover selections in real time with the project button components-->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js"></script>
 </head>
@@ -99,32 +103,49 @@
                     </div>
 
                     <div class="tab-container">
-
-                        <!--Actual Slides-->
+                        <!--SLIDESHOW FORMAT-->
                         <template x-for="prod in cat.products">
-                            
+                            <!--ENCAPSULATING DIV FOR ENTIRE TEMPLATE-->
                             <div>
-                                <!--SLIDES-->
-                                <template x-for="slide in prod.slides" :key="slide.id">
-                                    <div x-show="prod.activeSlide === slide.id">
-                                        <img style="max-width: 300px; max-height: 100%;"
-                                        :src="`/media/social-media/${slide.imgSrc}`">
-                                    </div>       
-                                </template>
+                                <div class="inline-text">
+                                    <p>
+                                        <b x-text="prod.title"></b> 
+                                    </p>
+                                    <p x-text="`&nbsp- ${prod.role}`"></p>
+                                </div>
+                                <!--DIV TO HANDLE FLEX FOR BUTTONS AND SLIDES-->
+                                <div class="slide-container">
+                                    <!--BACK BUTTON-->
+                                    <button class="slide-button" x-on:click="prod.activeSlide = prod.activeSlide === 1 ? prod.slides.length : prod.activeSlide - 1">
+                                        <img src="/media/icons/buttons/arrow-left-light.svg">
+                                    </button>
 
-                                <!--BUTTONS-->
-
-                                <button x-on:click="prod.activeSlide = prod.activeSlide === 1 ? prod.slides.length : prod.activeSlide - 1">
-                                    &#8592;
-                                </button>
-                                <button x-on:click="prod.activeSlide = prod.activeSlide === prod.slides.length ? 1 : prod.activeSlide + 1">
-                                    &#8594;
-                                </button>
-
-                                <!--EXACT BUTTONS-->
-                                <div>
+                                    <!--SLIDES-->
                                     <template x-for="slide in prod.slides" :key="slide.id">
-                                        <button x-text="slide.id" x-on:click="prod.activeSlide = slide.id"></button>
+                                        <div x-show="prod.activeSlide === slide.id">
+                                            <a x-bind:href="`/media/social-media/${slide.imgSrc}`" class="swipebox" x-bind:title="slide.title">
+                                                <img style="max-width: 300px; max-height: 100%;"
+                                                :src="`/media/social-media/${slide.imgSrc}`"
+                                                class="tab-container-image">
+                                            </a>
+                                        </div>       
+                                    </template>
+
+                                    <!--FORWARD BUTTON-->
+                                    <button class="slide-button" x-on:click="prod.activeSlide = prod.activeSlide === prod.slides.length ? 1 : prod.activeSlide + 1">
+                                        <img src="/media/icons/buttons/arrow-right-light.svg">
+                                    </button>
+                                </div>
+
+                                <!--EXACT PAGE BUTTONS-->
+                                <div class="page-button-container">
+                                    <template x-for="slide in prod.slides" :key="slide.id">
+                                        <button class="page-button"
+                                        :class="{
+                                            'page-button-selected': prod.activeSlide === slide.id,
+                                            'page-button': prod.activeSlide !== slide.id
+                                        }"
+                                         x-on:click="prod.activeSlide = slide.id"></button>
                                     </template>
                                 </div>
                                 
@@ -270,7 +291,14 @@
                 Alpine.data('categoryData', () => ({
                     get categoryData() {return categoryData}
                 }))
+                
             })
+        </script>
+        <!--BIND SWIPEBOX TO ALL LINKS CLASSED SWIPEBOX-->
+        <script type="text/javascript">
+            ;(function($) {
+                $('.swipebox').swipebox();
+            }) (jQuery);
         </script>
 </body>
 </html>
