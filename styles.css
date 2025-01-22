@@ -159,6 +159,49 @@ p {
 
 /*#endregion Global*/
 
+/*#region Footer*/
+
+#footer-container {
+    width: 100%;
+    display: flex;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: inherit;
+
+    border-top: var(--border-width-md) solid var(--border-primary);
+    background: var(--surface-page);
+}
+
+.footer a{
+    text-decoration: none;
+    color: var(--text-body);
+}
+
+.footer a:hover {
+    color: var(--text-action-hover);
+    cursor: pointer;
+}
+
+.pagelist {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pagelist ul{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/*#endregion Footer*/
+
 /*#region Header/Nav*/
 
 #header-container {
