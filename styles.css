@@ -27,6 +27,7 @@
     --border-width-md: 2px;
 
     --type-font-family-heading: Roboto Mono;
+    --type-font-family-body: Sometype Mono, sans-serif;
     --heading-h5: 20px;
     --line-height-heading-h5: 24px;
     --heading-h6: 18px;
@@ -709,3 +710,78 @@ p {
     object-fit: contain;
 }
 /*#endregion Work Examples*/
+
+/*#region Contact Form*/
+form {
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+}
+
+.contact-form-input{
+    padding-bottom: 24px;
+}
+
+.contact-form-input input{
+    min-height: 32px;
+    width: 50%;
+    min-width: 100px;
+
+    font-family: var(--type-font-family-body);
+    font-size: 12pt;
+
+    margin-top: 12px;
+    padding: 4px 8px 4px 8px;
+
+    border-radius: var(--border-radius-md);
+    border: var(--border-width-md) solid var(--border-primary);
+}
+
+.contact-form-input textarea{
+    min-height: 100px;
+    width: 100%;
+
+    font-family: var(--type-font-family-body);
+    font-size: 12pt;
+
+    box-sizing: border-box;
+    margin-top: 12px;
+    padding: 8px 8px 8px 8px;
+
+    border-radius: var(--border-radius-md);
+    border: var(--border-width-md) solid var(--border-primary);
+}
+
+.submit-btn {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+.submit-btn div {
+    display: inline-flex;
+    padding: 2px 8px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    border-radius: var(--border-radius-md);
+    border: var(--border-width-md) solid var(--border-primary);
+    background: var(--surface-page);
+    box-shadow: 2px 2px 0px 0px var(--border-action-hover);
+}
+
+.submit-btn :hover{
+    background-color: var(--surface-action-hover-2);
+    color: var(--text-action-hover);
+}
+
+.submit-btn p {
+    margin: 0;
+    color: var(--text-body)
+}
+/*#endregion Contact Form*/
