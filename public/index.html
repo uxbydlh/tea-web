@@ -34,7 +34,7 @@
 
         <!--AUTHORS INTRO-->
         <section class="author-intro">
-            <img class="author-photo" src="media/highlight-card/test_card.png">
+            <img class="author-photo" src="https://fastly.picsum.photos/id/65/4912/3264.jpg?hmac=uq0IxYtPIqRKinGruj45KcPPzxDjQvErcxyS1tn7bG0">
             <div class="author-rows">
                 <div class="author-tag">
                     <img src="/media/icons/tabs/icon_bullet.svg">
@@ -61,7 +61,9 @@
             <div class="blurb">
                 <p>
                     Short introduction representative of the subject.
-                    Ready for the next chapter!
+                    May include about 5 sentences of introduction.
+                    Experience, special interests and even hobbies can be outlined here.
+                    May also wish to include a fun fact.
                 </p>
             </div>
         </section>
@@ -80,7 +82,7 @@
                 <template x-for="hl in highlightData">
                     <div class="highlight-card">
                         <div class="highlight-image-frame">
-                            <img :src="`/media/highlight-card/${hl.image}`">
+                            <img :src="`${hl.image}`">
                         </div>
                         <div class="highlight-info-frame">
                             <div class="highlight-tab-header">
@@ -125,11 +127,11 @@
             const highlightData = [
                 {
                     title: "Test title 1",
-                    blurb: "this is a test paragraph. I'm testing you. yeah haha. testing your patience that is.",
-                    image: "breecrunched.jpg",
+                    blurb: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur suscipit sed arcu et vehicula. Sed augue eros, pharetra id diam a, vulputate luctus ante.",
+                    image: "https://picsum.photos/800/500?random=1",
                     buttons: [
                         {
-                            link: "https://www.youtube.com/c/AtomicShrimp/videos",
+                            link: "#",
                             icon: "joystick.svg",
                             text: "PLAY"
                         },
@@ -142,27 +144,71 @@
                 },
                 {
                     title: "Test title 2",
-                    blurb: "this is a second test paragraph. I'm testing you. yeah haha. testing your patience that is.",
-                    image: "breecrunched.jpg",
-                    btn1txt: "testtesttesttesttest"
+                    blurb: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur suscipit sed arcu et vehicula. Sed augue eros, pharetra id diam a, vulputate luctus ante.",
+                    image: "https://picsum.photos/800/500?random=2",
+                    buttons: [
+                        {
+                            link: "#",
+                            icon: "joystick.svg",
+                            text: "PLAY"
+                        },
+                        {
+                            link: "#",
+                            icon: "book-open.svg",
+                            text: "READ"
+                        }
+                    ]
                 },
                 {
                     title: "Test title 3",
-                    blurb: "this is a third test paragraph. I'm testing you. yeah haha. testing your patience that is.",
-                    image: "breecrunched.jpg",
-                    btn1txt: "testtesttesttesttest"
+                    blurb: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur suscipit sed arcu et vehicula. Sed augue eros, pharetra id diam a, vulputate luctus ante.",
+                    image: "https://picsum.photos/800/500?random=3",
+                    buttons: [
+                        {
+                            link: "#",
+                            icon: "joystick.svg",
+                            text: "PLAY"
+                        },
+                        {
+                            link: "#",
+                            icon: "book-open.svg",
+                            text: "READ"
+                        }
+                    ]
                 },
                 {
                     title: "Test title 4",
-                    blurb: "this is a fourth test paragraph. I'm testing you. yeah haha. testing your patience that is.",
-                    image: "breecrunched.jpg",
-                    btn1txt: "testtesttesttesttest"
+                    blurb: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur suscipit sed arcu et vehicula. Sed augue eros, pharetra id diam a, vulputate luctus ante.",
+                    image: "https://picsum.photos/800/500?random=4",
+                    buttons: [
+                        {
+                            link: "#",
+                            icon: "joystick.svg",
+                            text: "PLAY"
+                        },
+                        {
+                            link: "#",
+                            icon: "book-open.svg",
+                            text: "READ"
+                        }
+                    ]
                 },
                 {
                     title: "Test title 5",
-                    blurb: "this is a fifth test paragraph. I'm testing you. yeah haha. testing your patience that is.",
-                    image: "breecrunched.jpg",
-                    btn1txt: "testtesttesttesttest"
+                    blurb: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur suscipit sed arcu et vehicula. Sed augue eros, pharetra id diam a, vulputate luctus ante.",
+                    image: "https://picsum.photos/800/500?random=5",
+                    buttons: [
+                        {
+                            link: "#",
+                            icon: "joystick.svg",
+                            text: "PLAY"
+                        },
+                        {
+                            link: "#",
+                            icon: "book-open.svg",
+                            text: "READ"
+                        }
+                    ]
                 },
             ]
             Alpine.data('highlightData', () => ({
