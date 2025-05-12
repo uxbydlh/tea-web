@@ -76,8 +76,18 @@ main {
     background-color: var(--surface-primary);
 }
 
+article {
+    align-items: stretch;
+}
+
+
 ul {
     list-style: none;
+}
+
+
+article ul {
+    list-style: disc;
 }
 
 h5 {
@@ -114,11 +124,22 @@ p {
     letter-spacing: 0.64px;
 }
 
+hr {
+    width: 100%;
+}
+
 .tab-collection {
     display: flex;
     flex-direction: column;
     align-self: stretch;
     gap: 24px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-self: stretch;
+    align-items:stretch;
 }
 
 .inline-text {
@@ -562,6 +583,20 @@ p {
     border-right: var(--border-width-md) solid var(--border-primary);
 }
 
+.tab-container-article {
+    display: flex;
+    padding: 24px;
+    flex-direction: column;
+    align-items: stretch;
+    align-self: stretch;
+
+    background: var(--surface-page);
+
+    border-bottom: var(--border-width-md) solid var(--border-primary);
+    border-left: var(--border-width-md) solid var(--border-primary);
+    border-right: var(--border-width-md) solid var(--border-primary);
+}
+
 .slide-container {
     display: flex;
     align-items: center;
@@ -828,3 +863,22 @@ form {
     color: var(--text-body)
 }
 /*#endregion Contact Form*/
+
+/*#region About*/
+
+.resume .row {
+    gap: 16px;
+}
+
+.resume .row a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+}
+
+.resume .row a img {
+    max-width: 16px;
+}
+
+/*#endregion About*/
