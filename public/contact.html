@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <!--tells browser how to control dimensions and scaling-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--suggested theme colour for page and surrounding  ui. Baby pink.-->
+    <meta name="theme-color" content="#feeaf1">
+    <title>Author Name • Contact</title>
+
+    <!--TODO: change to real icons/favicons when provided-->
+    <link rel="apple-touch-icon" sizes="180x180" href="#">
+    <link rel="icon" type="image/png" sizes="32x32" href="#">
+    <link rel="icon" type="image/png" sizes="16x16" href="#">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono|Sometype+Mono">
+
+    <!--stylesheet(s)-->
+    <link href="styles.css" rel="stylesheet"/>
+
+    <!--jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!--Alpine js: allows us to make hover selections in real time with the project button components-->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js"></script>
+</head>
+<body>
+    <div id="header-container"></div>
+    <script>
+        $(function(){
+            $("#header-container").load("components/header.html");
+        })
+    </script>
+    <main>
+
+        <!--BLURB BOX-->
+        <section class="blurb-box">
+            <div class="blurb-heading">
+                <img src="/media/icons/tabs/icon_bullet.svg">
+                <h5>Contact</h5>
+                <img src="/media/icons/tabs/icon_bullet.svg">
+            </div>
+            <div class="blurb">
+                <p>
+                    Short Introduction to the Contact page. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at tempus felis, sit amet porttitor sem. Curabitur eget volutpat orci. Morbi hendrerit mauris ac malesuada sodales.
+                </p>
+            </div>
+        </section>
+
+        <!--FORM TAB-->
+        <section class="tabbed-section">
+            <div class="section-tab">
+                <div class="section-tab-inner">
+                    <img src="/media/icons/tabs/star.svg" class="section-tab-icon">
+                    <h5>Contact Form</h5>
+                    <img src="/media/icons/tabs/icon_bullet.svg">
+                </div>
+            </div>
+            <div class="tab-container" x-data="{sent: false}">         
+                <!--ACTUAL CONTACT FORM-->
+                <form x-data="contactForm()" @submit.prevent="submit">
+                    <div x-show="!sent">
+                        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                    <div class="contact-form-input">
+                        <h6>Name</h6>
+                        <input type="text" name="name" required />
+                    </div>
+                    <div class="contact-form-input">
+                        <h6>Email</h6>
+                        <input type="email" name="email" required />
+                    </div>
+                    <div class="contact-form-input">
+                        <h6>Message</h6>
+                        <textarea name="message" required rows="3"></textarea>
+                    </div>
+                    <button x-on:click="sent = ! sent" class="submit-btn" type="submit" :disabled="loading">
+                        <div>
+                            <p>Submit</p>
+                            <img src="../media/icons/buttons/arrow_right.svg">
+                        </div>
+                    </button>
+                    </div>
+                    <div x-show="sent" class="blurb" x-text="status"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-container"></div>
+    <script>
+        $(function(){
+            $("#footer-container").load("../components/footer.html");
+        })
+    </script>
+
+    <script>
+    function contactForm() {
+    return {
+        buttonText: "Submit",
+        loading: false,
+        status: "",
+        async submit(event) {
+        const formData = new FormData(event.target);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        this.status = "Submitting...";
+        this.loading = true;
+
+        const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+            },
+            body: json
+        });
+        const result = await response.json();
+        if (result.success) {
+            console.log(result);
+            this.status = result.message || "Success";
+        }
+        this.loading = false;
+        }
+    };
+    }
+    </script>
+    
+</body>
+</html>

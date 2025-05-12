@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <!--tells browser how to control dimensions and scaling-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--suggested theme colour for page and surrounding  ui. Baby pink.-->
+    <meta name="theme-color" content="#feeaf1">
+    <title>Author Name • Home</title>
+
+    <!--TODO: change to real icons/favicons when provided-->
+    <link rel="apple-touch-icon" sizes="180x180" href="#">
+    <link rel="icon" type="image/png" sizes="32x32" href="#">
+    <link rel="icon" type="image/png" sizes="16x16" href="#">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono|Sometype+Mono">
+
+    <!--stylesheet(s)-->
+    <link href="styles.css" rel="stylesheet"/>
+
+    <!--jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!--Alpine js: allows us to make hover selections in real time with the project button components-->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js"></script>
+</head>
+<body>
+    <div id="header-container"></div>
+    <script>
+        $(function(){
+            $("#header-container").load("components/header.html");
+        })
+    </script>
+
+    <main>
+
+        <!--AUTHORS INTRO-->
+        <section class="author-intro">
+            <img class="author-photo" src="https://fastly.picsum.photos/id/65/4912/3264.jpg?hmac=uq0IxYtPIqRKinGruj45KcPPzxDjQvErcxyS1tn7bG0">
+            <div class="author-rows">
+                <div class="author-tag">
+                    <img src="/media/icons/tabs/icon_bullet.svg">
+                    <h6>Writer</h6>
+                </div>
+                <div class="author-tag">
+                    <img src="/media/icons/tabs/icon_bullet.svg">
+                    <h6>Editor</h6>
+                </div>
+                <div class="author-tag">
+                    <img src="/media/icons/tabs/icon_bullet.svg">
+                    <h6>Artist</h6>
+                </div>
+            </div>
+        </section>
+
+        <!--EISNER NOMINATED-->
+        <section class="blurb-box">
+            <div class="blurb-heading">
+                <img src="/media/icons/tabs/icon_bullet.svg">
+                <h5>Proudest Achievement Here</h5>
+                <img src="/media/icons/tabs/icon_bullet.svg">
+            </div>
+            <div class="blurb">
+                <p>
+                    Short introduction representative of the subject.
+                    May include about 5 sentences of introduction.
+                    Experience, special interests and even hobbies can be outlined here.
+                    May also wish to include a fun fact.
+                </p>
+            </div>
+        </section>
+
+
+        <!--HIGHLIGHTS TAB-->
+        <section class="tabbed-section">
+            <div class="section-tab">
+                <div class="section-tab-inner">
+                    <img src="/media/icons/tabs/star.svg" class="section-tab-icon">
+                    <h5>Highlights</h5>
+                    <img src="/media/icons/tabs/icon_bullet.svg">
+                </div>
+            </div>
+            <div class="tab-container" x-data="highlightData">
+                <template x-for="hl in highlightData">
+                    <div class="highlight-card">
+                        <div class="highlight-image-frame">
+                            <img :src="`${hl.image}`">
+                        </div>
+                        <div class="highlight-info-frame">
+                            <div class="highlight-tab-header">
+                                <div class="highlight-tab-inner">
+                                    <h6 x-text="hl.title"></h6>
+                                    <img src="/media/highlight-card/icon_highlightright.svg">
+                                </div>
+                            </div>
+                            <div class="highlight-blurb-frame">
+                                <p class="highlight-blurb" x-text="hl.blurb">
+                                </p>
+                            </div>
+                            
+                            <div class="highlight-btn-row">
+                                <template x-for="btn in hl.buttons" :key="index">
+                                    <a class="menu-btn" id="small" x-bind:href="btn.link" target="_blank" rel="noopener noreferrer">
+                                        <div class="icon-frame" id="small">
+                                            <img :src="`/media/icons/buttons/${btn.icon}`">
+                                        </div>
+                                        <p x-text="btn.text"></p>
+                                    </a>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="footer-container"></div>
+    <script>
+        $(function(){
+            $("#footer-container").load("components/footer.html");
+        })
+    </script>
+
+    <!--ALPINE DATA INSERTION-->
+    <script>
+        document.addEventListener('alpine:init', () => {
+            const highlightData = [
+                {
+                    title: "Test title 1",
+                    blurb: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur suscipit sed arcu et vehicula. Sed augue eros, pharetra id diam a, vulputate luctus ante.",
+                    image: "https://picsum.photos/800/500?random=1",
+                    buttons: [
+                        {
+                            link: "#",
+                            icon: "joystick.svg",
+                            text: "PLAY"
+                        },
+                        {
+                            link: "#",
+                            icon: "book-open.svg",
+                            text: "READ"
+                        }
+                    ]
+                },
+                {
+                    title: "Test title 2",
+                    blurb: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur suscipit sed arcu et vehicula. Sed augue eros, pharetra id diam a, vulputate luctus ante.",
+                    image: "https://picsum.photos/800/500?random=2",
+                    buttons: [
+                        {
+                            link: "#",
+                            icon: "joystick.svg",
+                            text: "PLAY"
+                        },
+                        {
+                            link: "#",
+                            icon: "book-open.svg",
+                            text: "READ"
+                        }
+                    ]
+                },
+                {
+                    title: "Test title 3",
+                    blurb: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur suscipit sed arcu et vehicula. Sed augue eros, pharetra id diam a, vulputate luctus ante.",
+                    image: "https://picsum.photos/800/500?random=3",
+                    buttons: [
+                        {
+                            link: "#",
+                            icon: "joystick.svg",
+                            text: "PLAY"
+                        },
+                        {
+                            link: "#",
+                            icon: "book-open.svg",
+                            text: "READ"
+                        }
+                    ]
+                },
+                {
+                    title: "Test title 4",
+                    blurb: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur suscipit sed arcu et vehicula. Sed augue eros, pharetra id diam a, vulputate luctus ante.",
+                    image: "https://picsum.photos/800/500?random=4",
+                    buttons: [
+                        {
+                            link: "#",
+                            icon: "joystick.svg",
+                            text: "PLAY"
+                        },
+                        {
+                            link: "#",
+                            icon: "book-open.svg",
+                            text: "READ"
+                        }
+                    ]
+                },
+                {
+                    title: "Test title 5",
+                    blurb: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur suscipit sed arcu et vehicula. Sed augue eros, pharetra id diam a, vulputate luctus ante.",
+                    image: "https://picsum.photos/800/500?random=5",
+                    buttons: [
+                        {
+                            link: "#",
+                            icon: "joystick.svg",
+                            text: "PLAY"
+                        },
+                        {
+                            link: "#",
+                            icon: "book-open.svg",
+                            text: "READ"
+                        }
+                    ]
+                },
+            ]
+            Alpine.data('highlightData', () => ({
+                get highlightData() {return highlightData}
+            }))
+        })
+    </script>
+</body>
+</html>

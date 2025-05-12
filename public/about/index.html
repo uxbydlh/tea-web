@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <!--tells browser how to control dimensions and scaling-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--suggested theme colour for page and surrounding  ui. Baby pink.-->
+    <meta name="theme-color" content="#feeaf1">
+    <title>Author Name • About</title>
+
+    <!--TODO: change to real icons/favicons when provided-->
+    <link rel="apple-touch-icon" sizes="180x180" href="#">
+    <link rel="icon" type="image/png" sizes="32x32" href="#">
+    <link rel="icon" type="image/png" sizes="16x16" href="#">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono|Sometype+Mono">
+
+    <!--stylesheet(s)-->
+    <link href="../styles.css" rel="stylesheet"/>
+
+    <!--jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!--Alpine js: allows us to make hover selections in real time with the project button components-->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js"></script>
+</head>
+<body>
+    <div id="header-container"></div>
+    <script>
+        $(function(){
+            $("#header-container").load("../components/header.html");
+        })
+    </script>
+
+    <main>
+
+        <!--AUTHORS INTRO-->
+        <section class="author-intro">
+            <img class="author-photo" src="https://fastly.picsum.photos/id/65/4912/3264.jpg?hmac=uq0IxYtPIqRKinGruj45KcPPzxDjQvErcxyS1tn7bG0">
+            <div class="author-rows">
+                <div class="author-tag">
+                    <img src="../media/icons/tabs/icon_bullet.svg">
+                    <h6>Writer</h6>
+                </div>
+                <div class="author-tag">
+                    <img src="../media/icons/tabs/icon_bullet.svg">
+                    <h6>Editor</h6>
+                </div>
+                <div class="author-tag">
+                    <img src="../media/icons/tabs/icon_bullet.svg">
+                    <h6>Artist</h6>
+                </div>
+            </div>
+        </section>
+
+        <!--ACHIEVEMENT BOX-->
+        <section class="blurb-box">
+            <div class="blurb-heading">
+                <img src="../media/icons/tabs/icon_bullet.svg">
+                <h5>Proudest Achievement Here</h5>
+                <img src="../media/icons/tabs/icon_bullet.svg">
+            </div>
+            <div class="blurb">
+                <p>
+                    Short introduction representative of the subject.
+                    May include about 5 sentences of introduction.
+                    Experience, special interests and even hobbies can be outlined here.
+                    May also wish to include a fun fact.
+                </p>
+            </div>
+        </section>
+
+        <!--RESUME-->
+        <div class="tab-collection">
+            <div class="tabbed-section">
+                <!--SECTION TAB-->
+                <div class="section-tab">
+                    <div class="section-tab-inner">
+                        <img src="../media/icons/tabs/resume.svg" class="section-tab-icon">
+                            <h5>Resume</h5>
+                            <img src="../media/icons/tabs/icon_bullet.svg">
+                    </div>
+                </div>
+                <!--RESUME HERE-->
+                <article class="tab-container-article resume" id="resume">
+                    <h1>CLIENT NAME</h1>
+                    <h4>Specialty 1 | Specialty 2 | Specialty 3</h4>
+                    <div class="row">
+                        <a><img src="../media/icons/menu/envelope.svg"><p>Email Link</p></a>
+                        <a><img src="../media/icons/menu/heart.svg"><p>Secondary Contact</p></a>
+                        <a><img src="../media/icons/menu/heart.svg"><p>Tertiary Contact</p></a>
+                    </div>
+                    <p>
+                        Blurb Paragraph roughly outlining the skills and experience of the client.
+                    </p>
+                    <hr>
+                    <h3>EXPERIENCE</h3>
+                    <h2>Position at Company</h2>
+                    <h4>Location • Start Date - End Date</h4>
+                    <ul>
+                        <li>First point of relevant experience</li>
+                        <li>Second point of relevant experience</li>
+                        <li>Third point of relevant experience</li>
+                    </ul>
+                    <hr>
+                    <h3>SKILLS</h3>
+                    <ul>
+                        <li><b>Skill One: </b>Example, Example, Example</li>
+                        <li><b>Skill Two: </b>Example, Example, Example</li>
+                        <li><b>Skill Three: </b>Example, Example, Example</li>
+                    </ul>
+                    <hr>
+                    <h3>EDUCATION</h3>
+                    <h2>Type of Degree</h2>
+                    <h4>Name of Organisation • Location • Date of Graduation | Honours if Applicable</h4>
+                    <p>Short description of degree course</p>
+                </article>
+            </div>
+            <div class="highlight-btn-row">
+                <a class="menu-btn" id="small" href="#">
+                    <div class="icon-frame" id="small">
+                        <img src="../media/icons/buttons/print.svg">
+                    </div>
+                    <p>PRINT RESUME</p>
+                </a>
+                <a class="menu-btn" id="small" href="#">
+                    <div class="icon-frame" id="small">
+                        <img src="../media/icons/buttons/save.svg">
+                    </div>
+                    <p>SAVE RESUME</p>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-container"></div>
+    <script>
+        $(function(){
+            $("#footer-container").load("../components/footer.html");
+        })
+    </script>
+
+</body>
+</html>
