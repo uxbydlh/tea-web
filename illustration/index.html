@@ -47,8 +47,7 @@
             </div>
             <div class="blurb">
                 <p>
-                    Short introduction to the illustration page,
-                    in your own words (if desired).
+                    Short introduction to the illustration page. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at tempus felis, sit amet porttitor sem. Curabitur eget volutpat orci. Morbi hendrerit mauris ac malesuada sodales.
                 </p>
             </div>
         </section>
@@ -59,7 +58,7 @@
                 <template x-for="hl in highlightData">
                     <div class="highlight-card">
                         <div class="highlight-image-frame">
-                            <img :src="`../media/highlight-card/${hl.image}`">
+                            <img src="https://picsum.photos/800/500">
                         </div>
                         <div class="highlight-info-frame">
                             <div class="highlight-tab-header">
@@ -105,8 +104,8 @@
                     <div class="tab-container-grid">
                         <template x-for="image in cat.images">
                             <div style="text-align: center;">
-                                <a x-bind:href="`../media/illustration/big/${image.name}`" class="swipebox" x-bind:title="image.title">
-                                    <img :src="`../media/illustration/small/${image.name}`" class="tab-container-image">
+                                <a x-bind:href="`${image.name}`" class="swipebox" x-bind:title="image.title">
+                                    <img :src="`${image.name}`" class="tab-container-image">
                                 </a>
                                 <p>
                                     <b x-text="image.title"></b> 
@@ -142,8 +141,8 @@
                             <!--SLIDES-->
                             <template x-for="slide in comic.slides" :key="slide.id">
                                 <div x-show="comic.activeSlide === slide.id">
-                                    <a x-bind:href="`../media/illustration/comics/big/${slide.name}`" class="swipebox" x-bind:title="slide.title">
-                                        <img :src="`../media/illustration/comics/small/${slide.name}`" class="tab-container-image">
+                                    <a x-bind:href="`${slide.name}`" class="swipebox" x-bind:title="slide.title">
+                                        <img :src="`${slide.name}`" class="tab-container-image">
                                     </a>
                                     <div class="inline-text">
                                         <p>
@@ -169,11 +168,19 @@
                                 x-on:click="comic.activeSlide = slide.id"></button>
                             </template>
                         </div>
+                        <p>Images from Pexels. Not representative of Author's actual comic pages.</p>
                     </div>
                 </template>
             </section>
         </div>
     </main>
+
+    <div id="footer-container"></div>
+    <script>
+        $(function(){
+            $("#footer-container").load("../components/footer.html");
+        })
+    </script>
 
         <!--ALPINE DATA INSERTION-->
         <script>
@@ -185,7 +192,7 @@
                     image: "test_card.png",
                     buttons: {
                         btn1: {
-                            link: "https://www.youtube.com/c/AtomicShrimp/videos",
+                            link: "#",
                             icon: "gift.svg",
                             text: "Buy"
                         },
@@ -208,29 +215,24 @@
                         icon: "film-strip-light.svg",
                         images: [
                             {
-                                name: "alice.gif",
+                                name: "https://cdn.pixabay.com/animation/2023/07/27/20/59/20-59-27-624_512.gif",
                                 title: "PLACEHOLDER TITLE",
                                 desc: "PLACEHOLDER DESC",
                             },
                             {
-                                name: "cat.gif",
+                                name: "https://cdn.pixabay.com/animation/2022/10/11/09/05/09-05-26-529_512.gif",
                                 title: "PLACEHOLDER TITLE",
                                 desc: "PLACEHOLDER DESC",
                             },
                             {
-                                name: "fairy.gif",
+                                name: "https://cdn.pixabay.com/animation/2022/11/30/19/48/19-48-34-65_512.gif",
                                 title: "PLACEHOLDER TITLE",
                                 desc: "PLACEHOLDER DESC",
                             },
                             {
-                                name: "mermaid.gif",
+                                name: "https://cdn.pixabay.com/animation/2023/08/15/07/22/07-22-02-443_512.gif",
                                 title: "PLACEHOLDER TITLE",
-                                desc: "PLACEHOLDER DESC",
-                            },
-                            {
-                                name: "treasure.gif",
-                                title: "PLACEHOLDER TITLE",
-                                desc: "PLACEHOLDER DESC",
+                                desc: "Placeholder GIFs by The_Shire_Hobbit on Pixabay",
                             },
                         ]
                     }
@@ -244,15 +246,15 @@
                         slides: [
                             {
                                 id: 1,
-                                name: 'autism-1.png'
+                                name: 'https://images.pexels.com/photos/6654171/pexels-photo-6654171.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
                             },
                             {
                                 id: 2,
-                                name: 'autism-2.png'
+                                name: 'https://images.pexels.com/photos/8811520/pexels-photo-8811520.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
                             },
                             {
                                 id: 3,
-                                name: 'autism-3.png'
+                                name: 'https://images.pexels.com/photos/7768663/pexels-photo-7768663.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
                             }
                         ]
                     }

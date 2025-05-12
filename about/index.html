@@ -74,7 +74,7 @@
                 <!--SECTION TAB-->
                 <div class="section-tab">
                     <div class="section-tab-inner">
-                        <img :src="`../media/icons/creative-writing/${story.icon}`" class="section-tab-icon">
+                        <img src="../media/icons/tabs/resume.svg" class="section-tab-icon">
                             <h5>Resume</h5>
                             <img src="../media/icons/tabs/icon_bullet.svg">
                     </div>
@@ -114,7 +114,29 @@
                     <p>Short description of degree course</p>
                 </article>
             </div>
+            <div class="highlight-btn-row">
+                <a class="menu-btn" id="small" href="#">
+                    <div class="icon-frame" id="small">
+                        <img src="../media/icons/buttons/print.svg">
+                    </div>
+                    <p>PRINT RESUME</p>
+                </a>
+                <a class="menu-btn" id="small" href="#">
+                    <div class="icon-frame" id="small">
+                        <img src="../media/icons/buttons/save.svg">
+                    </div>
+                    <p>SAVE RESUME</p>
+                </a>
+            </div>
         </div>
+    </main>
+
+    <div id="footer-container"></div>
+    <script>
+        $(function(){
+            $("#footer-container").load("../components/footer.html");
+        })
+    </script>
 
 </body>
 </html>
